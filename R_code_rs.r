@@ -82,3 +82,34 @@ plot(l2011$B1_sre , col=clb)
 plot(l2011$B2_sre , col=clg)
 plot(l2011$B3_sre , col=clr)
 plot(l2011$B4_sre , col=clnir)
+
+# plot dell'immagino l2011 nella banda NIR
+clnir <- colorRampPalette(c("red", "orange", "yellow")) (100)
+plot(l2011$B4_sre, col=clnir)
+# oppure
+plot(l2011[[4]])
+
+# plot RGB layers (a colori naturali)
+plotRGB(l2011, r=3, g=2, b=1, stretch="lin")
+#
+plotRGB(l2011, r=4, g=3, b=2, stretch="lin")
+#
+plotRGB(l2011, r=3, g=4, b=2, stretch="lin")
+# (in giallo parte nuda, zone agricole)
+plotRGB(l2011, r=3, g=2, b=4, stretch="lin")
+#
+plotRGB(l2011, r=3, g=4, b=2, stretch="hist")
+
+# Esercizio: costruire un multiframe visibile con i colori RGB
+# (linear stretch) (colori naturali)
+# (histogram stretch) (falsi colori)
+par(mfrow=c(2,1))
+plotRGB(l2011, r=3, g=2, b=1, stretch="lin")
+plotRGB(l2011, r=3, g=4, b=2, stretch="hist")
+
+# Esercizio: caricare l'immagine del 1988
+l1988 <- brick("p224r63_1988.grd")
+# costruire un multriframe per confrontare l'immagine del 1988 con quella del 2011
+par(mfrow=c(2,1))
+plotRGB(l1988, r=4, g=3, b=2, stretch="lin")
+plotRGB(l2011, r=4, g=3, b=2, stretch="hist")
