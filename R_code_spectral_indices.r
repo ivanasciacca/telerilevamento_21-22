@@ -39,3 +39,9 @@ dvi2006
 
 cl <- colorRampPalette(c('darkblue', 'yellow', 'red', 'black')) (100)
 plot(dvi2006, col=cl)
+
+# DVI differenze nel tempo
+dvi_dif = dvi1992 - dvi2006
+cld <- colorRampPalette(c('blue', 'white', 'red')) (100)
+dev.off()
+plot(dvi_dif, col=cld)
