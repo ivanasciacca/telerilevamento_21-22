@@ -1,0 +1,40 @@
+# Time series analysis of Greenland LST data
+
+library(raster)
+
+setwd("C:/lab/Greenland")
+
+lst2000 <- raster("lst_2000.tif")
+lst2000
+plot(lst2000)
+
+# Esercizio: importa tutti i dati
+lst2005 <- raster("lst_2005.tif")
+lst2010 <- raster("lst_2010.tif")
+lst2015 <- raster("lst_2015.tif")
+
+# Esercizio: multiframe con i dati di Greendland
+cl <- colorRampPalette(c("blue", "light blue", "pink", "red")) (100)
+
+par(mfrow=c(2,2))
+plot(lst2000, col=cl)
+plot(lst2005, col=cl)
+plot(lst2010, col=cl)
+plot(lst2015, col=cl)
+
+# importate i dati tutti insieme
+rlist <- list.files(pattern="lst")
+rlist
+
+import <- lapply(rlist, raster)
+import
+
+tgr <- stack(import)
+tgr
+
+plot(tgr, col=cl)
+
+plot(tgr[[1]], col=cl)
+
+plotRGB(tgr, r=1, g=2, b=3, stretch="lin")
+
