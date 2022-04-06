@@ -1,18 +1,19 @@
 library(raster)
 
-# installa rgdal
+# Installare rgdal
 install.packages("rgdal")
 library(rgdal)
-# installa RStoolbox
+# Installare RStoolbox
 install.packages("RStoolbox")
 library(RStoolbox)
-# installa rasterdiv
+# Installare rasterdiv
 install.packages("rasterdiv")
 library(rasterdiv)
 
+# Settaggio della cartella di lavoro
 setwd("C:/lab/")
 
-# importo il primo file -> defor1_.jpg -> dando il nome di l1992
+# Importare il primo file -> defor1_.jpg -> dando il nome di l1992
 l1992 <- brick("defor1_.jpg")
 l1992
 
@@ -21,7 +22,7 @@ plotRGB(l1992, r=1, g=2, b=3, stretch="lin")
 # layer 2 = red
 # layer 3 = green
 
-# Esercizio: importa il secondo file -> defor2_.jpg -> dando il nome l2006
+# Esercizio: importare il secondo file -> defor2_.jpg -> dando il nome l2006
 l2006 <- brick("defor2_.jpg")
 l2006
 
