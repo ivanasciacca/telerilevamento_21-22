@@ -8,7 +8,7 @@ lst2000 <- raster("lst_2000.tif")
 lst2000
 plot(lst2000)
 
-# Esercizio: importa tutti i dati
+# Esercizio: importare tutti i dati
 lst2005 <- raster("lst_2005.tif")
 lst2010 <- raster("lst_2010.tif")
 lst2015 <- raster("lst_2015.tif")
@@ -22,7 +22,7 @@ plot(lst2005, col=cl)
 plot(lst2010, col=cl)
 plot(lst2015, col=cl)
 
-# importate i dati tutti insieme
+# importare i dati tutti insieme
 rlist <- list.files(pattern="lst")
 rlist
 
@@ -37,4 +37,53 @@ plot(tgr, col=cl)
 plot(tgr[[1]], col=cl)
 
 plotRGB(tgr, r=1, g=2, b=3, stretch="lin")
+
+
+## Esempio 2: decremento N02 durante il lockdown
+library(raster)
+
+setwd("C:/lab/en")
+
+en01 <- raster("EN_0001.png")
+en01
+
+cl <- colorRampPalette(c('red','orange','yellow'))(100)
+plot(en01, col=cl)
+
+en13 <- raster("EN_0013.png")
+en13
+
+cl <- colorRampPalette(c('red','orange','yellow'))(100)
+plot(en13, col=cl)
+
+# Importare tutti i dati insieme
+# Fare la lista dei file presenti nella cartella
+rlist <- list.files(pattern="EN")
+rlist
+
+# Importare la lista dei file
+rimp <- lapply(rlist, raster)
+rimp
+
+# Mettere tutti i file insieme
+en <- stack(rimp)
+en
+
+# Plot tutto insieme
+plot(en, col=cl)
+
+# Esercizio: plot EN01 accanto EN13
+par(mfrow=c(1,2))
+plot(en[[1]], col=cl)
+plot(en[[13]], col=cl)
+
+# Oppure 
+en113 <- stack(en[[1]], en[[13]])
+plot(en113, col=cl)
+
+# Fare la differenza tra en01 e en13
+difen <-  en[[1]] - en[[13]]
+cldif <- colorRampPalette(c('blue','white','red'))(100)
+plot(difen, col=cldif)
+
 
