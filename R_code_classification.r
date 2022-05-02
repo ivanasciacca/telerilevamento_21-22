@@ -4,6 +4,7 @@ library(RStoolbox)
 
 setwd("C:/lab/")
 
+# importa dati
 gc <- brick("dolansprings_oli_2013088_canyon_lrg.jpg")
 gc
 
@@ -15,4 +16,20 @@ plotRGB(gc, r=1, g=2, b=3, stretch="lin")
 
 plotRGB(gc, r=1, g=2, b=3, stretch="hist")
 
+# classificazione
 gcclass2 <- unsuperClass(gc, nClasses=2)
+gcclass2
+
+plot(gcclass2$map)
+
+# esercizio: classificazione della mappa in 4 classi
+gcclass4 <- unsuperClass(gc, nClasses=4)
+gcclass4
+
+clc <- colorRampPalette(c('yellow', 'red', 'blue', 'black')) (100)
+plot(gcclass4$map, col=clc)
+
+# comparare la classificazione della mappa con il set originale 
+par(mfrow=c(2,1))
+plot(gcclass4$map, col=clc)
+plotRGB(gc, r=1, g=2, b=3, stretch="hist")
