@@ -29,7 +29,7 @@ plotRGB(l06, 1, 2, 3, stretch="lin")
 
 #
 p1 <- ggRGB(l92, 1, 2, 3, stretch="lin")
-p2 <- ggRGB(l06, 1, 2, 3, stretch="lin")
+p2 <- ggRGB(l06, 1, 2, 3, stretch='lin')
 p1+p2 # sulla stessa riga 
 p1/p2 # sulla stessa colonna
 
@@ -56,3 +56,31 @@ freq(l92c$map)
 freq(l06c$map)
 # class 1: 163444 pixels
 # class 2: 179282 pixels
+
+## proporzioni
+tot92 <- 341292
+prop_forest_92 <- 305802 / tot92
+prop_forest_92
+
+# percentuale 
+tot92 <- 341292
+perc_forest_92 <- 305802 * 100 / tot92
+perc_forest_92
+
+# esercizio: calcolare la percentuale di area agricola nel 1992
+perc_agr_92 <- 100 - perc_forest_92
+perc_agr_92
+
+# percent_forest_92: 89.60128
+# percent_agr_92: 10.39872
+
+# percentuale del 2006
+tot_06 <- 342726
+percent_forest_06 <- 179282 *100 / tot_06
+percent_forest_06
+
+percent_agr_06 <- 100 - percent_forest_06
+percent_agr_06
+
+# percent_forest_06: 52.31059
+# percent_agr_06: 47.68941
