@@ -74,6 +74,7 @@ perc_agr_92
 # percent_forest_92: 89.60128
 # percent_agr_92: 10.39872
 
+
 # percentuale del 2006
 tot_06 <- 342726
 percent_forest_06 <- 179282 *100 / tot_06
@@ -84,3 +85,38 @@ percent_agr_06
 
 # percent_forest_06: 52.31059
 # percent_agr_06: 47.68941
+
+# DATI FINALI
+# percent_forest_92: 89.60128
+# percent_agr_92: 10.39872
+# percent_forest_06: 52.31059
+# percent_agr_06: 47.68941
+
+# costruire un dataframe con questi dati
+# Colonne (campi)
+class <- c("Forest", "Agriculture")
+percent_1992 <- c(89.60128, 10.39872)
+percent_2006 <- c(52.31059, 47.68941)
+
+multitemporal <- data.frame(class, percent_1992, percent_2006)
+multitemporal 
+View(multitemporal)
+
+# 1992
+ggplot(multitemporal, aes(x=class, y=percent_1992, color=class)) +
+geom_bar(stat="identity", fill="white")
+
+# 2006
+ggplot(multitemporal, aes(x=class, y=percent_2006, color=class)) +
+geom_bar(stat="identity", fill="white")
+
+#pdf
+pdf("percentages_1992.pdf")
+ggplot(multitemporal, aes(x=class, y=percent_1992, color=class)) +
+geom_bar(stat="identity", fill="white")
+dev.off()
+
+pdf("percentages_2006.pdf")
+ggplot(multitemporal, aes(x=class, y=percent_2006, color=class)) +
+geom_bar(stat="identity", fill="white")
+dev.off()
