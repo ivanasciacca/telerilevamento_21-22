@@ -10,6 +10,10 @@ setwd("C:/lab/")
 sen <- brick("sentinel.png")
 sen
 
+# Banda1 = NIR
+# Banda2 = red
+# Banda3 = green
+
 # Esercizio: plot l'immagine con la funzione ggRGB
 ggRGB(sen, 1, 2, 3, stretch="lin")
 ggRGB(sen, 1, 2, 3) # altro modo di scrivere la funzione ggRGB
@@ -18,6 +22,12 @@ ggRGB(sen, 2, 1, 3) # per cambiare colore alle bande NIR sulla componente g
 g1 <- ggRGB(sen, 1, 2, 3)
 g2 <- ggRGB(sen, 2, 1, 3)
 g1+g2 # patchwork
+
+# Esercizio: plot il grafico uno sopra l'altro
+g1/g2
+
+# Esercizio: plot i due grafici (2x2)
+(g1+g2)/(g1+g2)
 
 # Calcolare la variabilità sul NIR
 nir <- sen[[1]]
