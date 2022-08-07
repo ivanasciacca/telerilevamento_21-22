@@ -13,7 +13,7 @@ l2011
 # Visualizzare l'immagine l2011
 plot(l2011)
 
-# Cambiare i colore delle immagini
+# Cambiare i colori della leggenda per ogni singola banda per analizzare la riflettanza (bassa riflettanza = balck, alta riflettanza = light grey)
 cl <- colorRampPalette (c("black", "grey", "light grey")) (100)
 plot(l2011, col=cl)
 
