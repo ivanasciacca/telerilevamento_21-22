@@ -13,7 +13,7 @@ l2011
 # Visualizzare l'immagine l2011
 plot(l2011)
 
-# Cambiare i colori della leggenda per ogni singola banda per analizzare la riflettanza (bassa riflettanza = balck, alta riflettanza = light grey)
+# Cambiare i colori della leggenda di ogni singola banda per analizzare la riflettanza (bassa riflettanza = balck, alta riflettanza = light grey)
 cl <- colorRampPalette (c("black", "grey", "light grey")) (100)
 plot(l2011, col=cl)
 
@@ -23,15 +23,18 @@ plot(l2011, col=cl)
 # b3 = rosso
 # b4 = infrarosso vicino NIR
 
-# Plot della banda del blu b1 - B1_sre
+# Plot della banda del blu (b1)  B1_sre
+# Utizzare il simbolo $ per legare la banda B1_sre al dataset 
 plot(l2011$B1_sre)
-# Plot dell'elemento
+# Altro metodo
+# Plot del primo elemento, ovvero la banda del blu ed utilizzare le [] per indicare l'elemento
 plot(l2011[[1]])
 
+# Modificare la leggenda della banda b1
 cl <- colorRampPalette (c("black", "grey", "light grey")) (100)
 plot(l2011$B1_sre , col=cl)
 
-# Plot b1 da dark blue a light blue
+# Plot della banda b1 e cambiare la leggenda che va da dark blue, a blue fino a light blue
 clb <- colorRampPalette (c("dark blue", "blue", "light blue")) (100)
 plot(l2011$B1_sre , col=clb)
 
@@ -40,12 +43,12 @@ pdf("banda1.pdf")
 plot(l2011$B1_sre, col=clb)
 dev.off()
 
-# Steso procedimento per esportare l'immagine (solo il plot, non i dati) con la funzione png
+# Stesso procedimento per esportare l'immagine (solo il plot, non i dati) con la funzione png
 png("banda1.png")
 plot(l2011$B1_sre, col=clb)
 dev.off()
 
-# Plot b2 da dark green a light green
+# Plot della banda b2 e modificare la leggenda con i colori che vanno dal dark green, al green, al light green
 clg <- colorRampPalette (c("dark green", "green", "light green")) (100)
 plot(l2011$B2_sre , col=clg)
 
@@ -62,28 +65,28 @@ plot(l2011$B1_sre , col=clb)
 plot(l2011$B2_sre , col=clg)
 dev.off()
 
-# Invertire il multiframe 2 righe e 1 colonna
+# Invertire il multiframe in 2 righe e 1 colonna
 par(mfrow=c(2,1))
 plot(l2011$B1_sre , col=clb)
 plot(l2011$B2_sre , col=clg)
 dev.off()
 
-# Plot b3 da dark red a pink 
+# Plot della banda b3, utilizzando la leggenda che va da dark red, a red e infine a pink 
 clr <- colorRampPalette (c("dark red", "red", "pink")) (100)
 plot(l2011$B3_sre , col=clr)
 
-# Plot b4 da red a orange, da orange a yellow
+# Plot della banda b4, con una leggenda che va da red a orange, da orange a yellow
 clnir <- colorRampPalette (c("red", "orange", "yellow")) (100)
 plot(l2011$B4_sre , col=clnir)
 
-# creiamo il multiframe con 2 righe e 2 colonne 
+# Creare un multiframe con 2 righe e 2 colonne 
 par(mfrow=c(2,2))
 plot(l2011$B1_sre , col=clb)
 plot(l2011$B2_sre , col=clg)
 plot(l2011$B3_sre , col=clr)
 plot(l2011$B4_sre , col=clnir)
 
-# Plot dell'immagino l2011 nella banda NIR
+# Plot dell'immagine l2011 nella banda NIR
 clnir <- colorRampPalette(c("red", "orange", "yellow")) (100)
 plot(l2011$B4_sre, col=clnir)
 # oppure
