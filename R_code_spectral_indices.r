@@ -59,7 +59,7 @@ dvi_dif = dvi1992 - dvi2006
 cld <- colorRampPalette(c('blue', 'white', 'red')) (100)
 dev.off()
 plot(dvi_dif, col=cld)
-# La differenza di NDVI molto alta è segnata in rosso, indica l'elevata deforestazione
+# La differenza di DVI molto alta è segnata in rosso, indica l'elevata deforestazione
 
 
 # Secondo giorno
