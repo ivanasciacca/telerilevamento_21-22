@@ -20,15 +20,17 @@ setwd("C:/lab/")
 l1992 <- brick("defor1_.jpg")
 l1992
 
+# Plot RGB layers
 plotRGB(l1992, r=1, g=2, b=3, stretch="lin")
 # layer 1 = Nir
-# layer 2 = red
+# layer 2 = red 
 # layer 3 = green
 
 # Esercizio: importare il secondo file -> defor2_.jpg -> dando il nome l2006
 l2006 <- brick("defor2_.jpg")
 l2006
 
+# Plot RGB layers
 plotRGB(l2006, r=1, g=2, b=3, stretch="lin")
 
 # Esercizio: plot in un multiframe le due immagini in due righe e una colonna 
@@ -36,10 +38,11 @@ par(mfrow=c(2,1))
 plotRGB(l1992, r=1, g=2, b=3, stretch="lin")
 plotRGB(l2006, r=1, g=2, b=3, stretch="lin")
 
-# Calcolare il DVI Difference Vegetation Index (1992)
+# Calcolare il DVI Difference Vegetation Index (1992). ( Utilizzo gli elementi [[]] )
 dvi1992 = l1992[[1]] - l1992[[2]]
 dvi1992
 
+# Cambiare la leggenda
 cl <- colorRampPalette(c('darkblue', 'yellow', 'red', 'black')) (100)
 plot(dvi1992, col=cl)
 
@@ -47,6 +50,7 @@ plot(dvi1992, col=cl)
 dvi2006 = l2006[[1]] - l2006[[2]]
 dvi2006
 
+# Cambiare la leggenda (deforestazione in giallo)
 cl <- colorRampPalette(c('darkblue', 'yellow', 'red', 'black')) (100)
 plot(dvi2006, col=cl)
 
@@ -55,9 +59,10 @@ dvi_dif = dvi1992 - dvi2006
 cld <- colorRampPalette(c('blue', 'white', 'red')) (100)
 dev.off()
 plot(dvi_dif, col=cld)
+# La differenza di NDVI molto alta è segnata in rosso, indica l'elevata deforestazione
 
 
-# secondo giorno
+# Secondo giorno
 library(raster)
 setwd("C:/lab/")
 
