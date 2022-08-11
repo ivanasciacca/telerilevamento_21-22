@@ -6,7 +6,7 @@ library(raster)
 # Settaggio cartella di lavoro 
 setwd("C:/lab/")
 
-# Importare l'immagine satellitare e assegnare all'ogetto l2011 la funzione
+# Importare l'immagine satellitare e assegnare all'ogetto l2011 la funzione brick
 l2011 <- brick("p224r63_2011.grd")
 l2011
 
@@ -27,7 +27,7 @@ plot(l2011, col=cl)
 # Utizzare il simbolo $ per legare la banda B1_sre al dataset 
 plot(l2011$B1_sre)
 # Altro metodo
-# Plot del primo elemento, ovvero la banda del blu ed utilizzare le [] per indicare l'elemento
+# Plot del primo elemento, ovvero la banda del blu ed utilizzare le [[]] per indicare l'elemento
 plot(l2011[[1]])
 
 # Modificare la leggenda della banda b1
@@ -86,21 +86,25 @@ plot(l2011$B2_sre , col=clg)
 plot(l2011$B3_sre , col=clr)
 plot(l2011$B4_sre , col=clnir)
 
-# Plot dell'immagine l2011 nella banda NIR
+
+# Day #3
+
+# Esercizio: plot dell'immagine l2011 nella banda NIR
 clnir <- colorRampPalette(c("red", "orange", "yellow")) (100)
 plot(l2011$B4_sre, col=clnir)
-# oppure
+# Oppure
 plot(l2011[[4]])
 
-# Plot RGB layers (a colori naturali)
+# Plot RGB layers. Stretch, argomento che serve ad ampliare i valori per vedere meglio i contrasti tra i colori, pò essere lin= lineare o hist= istogrammi
+# Visualizzazione a colori naturali
 plotRGB(l2011, r=3, g=2, b=1, stretch="lin")
-#
+# Rosso = la vegetazione
 plotRGB(l2011, r=4, g=3, b=2, stretch="lin")
-#
+# In verde la foresta
 plotRGB(l2011, r=3, g=4, b=2, stretch="lin")
-# (in giallo parte nuda, zone agricole)
+# Immagine blu, in giallo parte nuda, zone agricole aperte
 plotRGB(l2011, r=3, g=2, b=4, stretch="lin")
-#
+# Hist lavora per istogrammi, i valori medi saranno più enfatizzati 
 plotRGB(l2011, r=3, g=4, b=2, stretch="hist")
 
 # Esercizio: costruire un multiframe visibile con i colori RGB
