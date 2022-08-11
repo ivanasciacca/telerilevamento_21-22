@@ -104,6 +104,7 @@ plotRGB(l2011, r=4, g=3, b=2, stretch="lin")
 plotRGB(l2011, r=3, g=4, b=2, stretch="lin")
 # Immagine blu, in giallo parte nuda, zone agricole aperte
 plotRGB(l2011, r=3, g=2, b=4, stretch="lin")
+
 # Hist lavora per istogrammi, i valori medi saranno più enfatizzati 
 plotRGB(l2011, r=3, g=4, b=2, stretch="hist")
 
@@ -116,8 +117,9 @@ plotRGB(l2011, r=3, g=4, b=2, stretch="hist")
 
 # Esercizio: caricare l'immagine del 1988
 l1988 <- brick("p224r63_1988.grd")
+l1988
 
 # Costruire un multriframe per confrontare l'immagine del 1988 con quella del 2011
 par(mfrow=c(2,1))
 plotRGB(l1988, r=4, g=3, b=2, stretch="lin")
-plotRGB(l2011, r=4, g=3, b=2, stretch="hist")
+plotRGB(l2011, r=4, g=3, b=2, stretch="lin")
