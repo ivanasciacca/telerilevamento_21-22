@@ -1,11 +1,14 @@
+# Richiamare la libreria raster
 library(raster)
 
 # Installare rgdal
 install.packages("rgdal")
 library(rgdal)
+
 # Installare RStoolbox
 install.packages("RStoolbox")
 library(RStoolbox)
+
 # Installare rasterdiv
 install.packages("rasterdiv")
 library(rasterdiv)
