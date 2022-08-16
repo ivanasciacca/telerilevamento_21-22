@@ -55,19 +55,25 @@ plotRGB(tgr, r=1, g=2, b=3, stretch="lin")
 
 
 ## Esempio 2: decremento N02 durante il lockdown
+# Richiamare la libreria raster
 library(raster)
 
+# Settare la cartella di lavoro
 setwd("C:/lab/en")
 
+# Caricare i rasterlayer
 en01 <- raster("EN_0001.png")
 en01
 
+# Utilizzare la funzione colorRampPalette per modificare la leggenda di visualizzazione 
 cl <- colorRampPalette(c('red','orange','yellow'))(100)
 plot(en01, col=cl)
 
+# Caricare i rasterlayer
 en13 <- raster("EN_0013.png")
 en13
 
+# Utilizzare questa leggenda
 cl <- colorRampPalette(c('red','orange','yellow'))(100)
 plot(en13, col=cl)
 
@@ -100,5 +106,9 @@ plot(en113, col=cl)
 difen <-  en[[1]] - en[[13]]
 cldif <- colorRampPalette(c('blue','white','red'))(100)
 plot(difen, col=cldif)
+
+# Plot con lo schema RGB i tre file insieme
+plotRGB(en, r=1, g=7, b=13, stretch="lin")
+plotRGB(en, r=1, g=7, b=13, stretch="hist")
 
 
