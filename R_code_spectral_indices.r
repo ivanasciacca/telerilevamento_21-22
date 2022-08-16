@@ -120,4 +120,7 @@ plot(si2006, col=cl)
 
 
 ## rasterdiv
+
+# copNDVI (raster a 8 bit), è la media globale del NDVI dal 1999 al 2017
 plot(copNDVI)
+
