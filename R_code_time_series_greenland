@@ -1,11 +1,15 @@
-# Time series analysis of Greenland LST data
+## Time series analysis of Greenland LST data
 
+# Richiamare la libreria raster
 library(raster)
 
+# Settaggio della cartella Greenland che è interna alla cartella lab
 setwd("C:/lab/Greenland")
 
+# Caricare il RasterLayer lst2000
 lst2000 <- raster("lst_2000.tif")
 lst2000
+# Plottare l'immagine lst2000
 plot(lst2000)
 
 # Esercizio: importare tutti i dati
@@ -22,21 +26,32 @@ plot(lst2005, col=cl)
 plot(lst2010, col=cl)
 plot(lst2015, col=cl)
 
-# importare i dati tutti insieme
+# Importare i dati tutti insieme, tramite la funzione list.fils che crea una lista di file
+# patter = ciò che hanno in comune questi file, in questo caso è lst
 rlist <- list.files(pattern="lst")
 rlist
 
+# Applicare la funzione raster all'intera lista, importare i 4 file
 import <- lapply(rlist, raster)
 import
 
+# La funzione stack ci consente di mettere insieme tutti i file in un blocco comune
 tgr <- stack(import)
 tgr
 
+# Plot di tutti i file insieme
 plot(tgr, col=cl)
 
+# Plot di una singola banda 
 plot(tgr[[1]], col=cl)
 
+# Plot con lo schema RGG, basato sui layer dello stack
+# r = lst2000
+# g = lst2005
+# b = lst2010
 plotRGB(tgr, r=1, g=2, b=3, stretch="lin")
+# Zona centrale nera è la zona comune dove la temperatura è bassa in tutti i lst
+# Zona un pò più chiara, zona dove la temperatura è un pò più bassa solo nel primo lst
 
 
 ## Esempio 2: decremento N02 durante il lockdown
