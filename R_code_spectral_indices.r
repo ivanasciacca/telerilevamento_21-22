@@ -63,6 +63,12 @@ plot(dvi_dif, col=cld)
 
 
 # Secondo giorno
+# Range DVI a 8 bit: -255 a 255
+# Range NDVI a 8 bit: -1 a 1
+
+# Range DVI a 16 bit: -65535 a 65535
+# Range NDVI a 16 bit: -1 a 1
+
 library(raster)
 setwd("C:/lab/")
 
