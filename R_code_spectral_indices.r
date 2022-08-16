@@ -69,39 +69,45 @@ plot(dvi_dif, col=cld)
 # Range DVI a 16 bit: -65535 a 65535
 # Range NDVI a 16 bit: -1 a 1
 
+# Richiamare la libreria Raster
 library(raster)
+# Settaggio della cartella di lavoro
 setwd("C:/lab/")
 
+# Caricare l'intero blocco di bande dell'immagine l1992
 l1992 <- brick("defor1_.jpg")
 l1992
 
+# Caricare l'intero blocco di bande dell'immagine l2006
 l2006 <- brick("defor2_.jpg")
 l2006
 
-# Calcolare NDVI
+# Calcolare NDVI del 1992
 dvi1992 = l1992[[1]] - l1992[[2]]
 ndvi1992 = dvi1992 / (l1992[[1]] + l1992[[2]])
-# altro metodo
+# Altro metodo
 ndvi1992 = (l1992[[1]] - l1992[[2]]) / (l1992[[1]] + l1992[[2]])
 ndvi1992
 
-# plottiamo l'immagine
+# Cambiare la leggenda 
 cl <- colorRampPalette(c('darkblue', 'yellow', 'red', 'black')) (100)
 plot(ndvi1992, col=cl)
 
-# multiframe con il plotRGB dell'immagine sopra e l'ndvi sotto
+# Multiframe con il plotRGB dell'immagine sopra l1992 e l'ndvi sotto ndvi1992
 par(mfrow=c(2,1))
 plotRGB(l1992, r=1, g=2, b=3, stretch="lin")
 plot(ndvi1992, col=cl)
 
-# 2006
+# Calcolare NDVI del 2006
 dvi2006 = l2006[[1]] - l2006[[2]]
 ndvi2006 = dvi2006 / (l2006[[1]] + l2006[[2]])
 ndvi2006
 
-# multiframe con NDVI1992 sopra e NDVI2006 sotto 
+# Multiframe con NDVI1992 sopra e NDVI2006 sotto 
 par(mfrow=c(2,1))
-plot(ndvi1992, col=cl)
+# Valore NDVI alto
+plot(ndvi1992, col=cl) 
+# Valore NDVI bassi, suolo nudo, zona agricola
 plot(ndvi2006, col=cl)
 
 # automatic spectral indices by the spectralIndices function
