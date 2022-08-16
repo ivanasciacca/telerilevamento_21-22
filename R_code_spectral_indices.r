@@ -105,7 +105,7 @@ ndvi2006
 
 # Multiframe con NDVI1992 sopra e NDVI2006 sotto 
 par(mfrow=c(2,1))
-# Valore NDVI alto
+# Valore NDVI alto, maggiore vegetazione
 plot(ndvi1992, col=cl) 
 # Valore NDVI bassi, suolo nudo, zona agricola
 plot(ndvi2006, col=cl)
