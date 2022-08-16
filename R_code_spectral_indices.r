@@ -110,10 +110,11 @@ plot(ndvi1992, col=cl)
 # Valore NDVI bassi, suolo nudo, zona agricola
 plot(ndvi2006, col=cl)
 
-# automatic spectral indices by the spectralIndices function
+# Indici spettrali automatici dalla funzione spectralIndices del 1992
 si1992 <- spectralIndices(l1992, green=3, red=2, nir=1 ) 
 plot(si1992, col=cl)
 
+# Indici spettrali automatici dalla funzione spectralIndices del 2006
 si2006 <- spectralIndices(l2006, green=3, red=2, nir=1 ) 
 plot(si2006, col=cl)
 
