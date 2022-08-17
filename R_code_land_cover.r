@@ -48,15 +48,15 @@ plot(l06c$map)
 # classe 1: area agricola e acqua
 # classe 2: foresta
 
-# frequenza
-
+# Calcolare la frequenza: quanti pixel fanno parte alla classe foresta
 freq(l92c$map)
-# class 1: 305802 pixels
-# class 2:  35490 pixels
+# class 1: 305802 pixels (foresta)
+# class 2:  35490 pixels (area agricola, acqua)
 
+# Calcolare la frequenza della mappa del 2006
 freq(l06c$map)
-# class 1: 163444 pixels
-# class 2: 179282 pixels
+# class 1: 163444 pixels (area agricola e acqua)
+# class 2: 179282 pixels (foresta)
 
 ## proporzioni
 tot92 <- 341292
