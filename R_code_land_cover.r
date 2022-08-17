@@ -28,25 +28,25 @@ par(mfrow=c(2,1))
 plotRGB(l92, 1, 2, 3, stretch="lin")
 plotRGB(l06, 1, 2, 3, stretch="lin")
 
-# Creare un multiframe con il pacchetto ggplot2
+# Creare un multiframe con il pacchetto ggplot2 e patchwork
 p1 <- ggRGB(l92, 1, 2, 3, stretch="lin")
 p2 <- ggRGB(l06, 1, 2, 3, stretch='lin')
 p1+p2 # sulla stessa riga 
 p1/p2 # sulla stessa colonna
 
-# classificazione immagine del 1992
+# Classificazione immagine del 1992, in 2 classi
 l92c <- unsuperClass(l92, nClasses=2)
 l92c
 plot(l92c$map)
-# class 1: foresta
-# class 2: area agricola e acqua
+# classe 1: foresta
+# classe 2: area agricola e acqua
 
-# classificazione immagine del 2006
+# Esercizio: classificare l'immagine del 2006, in 2 classi
 l06c <- unsuperClass(l06, nClasses=2)
 l06c
 plot(l06c$map)
-# class 1: area agricola e acqua
-# class 2: foresta
+# classe 1: area agricola e acqua
+# classe 2: foresta
 
 # frequenza
 
