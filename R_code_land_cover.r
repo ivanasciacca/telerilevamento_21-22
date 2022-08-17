@@ -1,4 +1,4 @@
-#
+# Richiamare le librerie da utilizzare
 library(raster)
 library(RStoolbox) # per la classificazione
 
@@ -10,24 +10,25 @@ library(ggplot2)
 install.packages("patchwork")
 library(patchwork)
 
+# Settaggio della cartella di lavoro
 setwd("C:/lab/")
 
-# brick importa l'intera immagine satellitare 
-# NIR 1
-# r 2
-# g 3
-
+# La funzione brick importa l'intera immagine satellitare, ovvero l'intero pacchetto di dati (defor1)
 l92 <- brick("defor1_.jpg")
 plotRGB(l92, 1, 2, 3, stretch="lin")
 
-# esercizio: 
+# Esercizio: importa l'immagine defor2
 l06 <- brick("defor2_.jpg")
 
+# Creare un multiframe con le immagini l92 e l06 in due righe e una colonna, utilizzando lo stretch lineare
+# NIR = 1
+# r = 2
+# g = 3
 par(mfrow=c(2,1))
 plotRGB(l92, 1, 2, 3, stretch="lin")
 plotRGB(l06, 1, 2, 3, stretch="lin")
 
-#
+# Creare un multiframe con il pacchetto ggplot2
 p1 <- ggRGB(l92, 1, 2, 3, stretch="lin")
 p2 <- ggRGB(l06, 1, 2, 3, stretch='lin')
 p1+p2 # sulla stessa riga 
