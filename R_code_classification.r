@@ -1,7 +1,8 @@
 # Richiamare la libreria raster
 library(raster)
 
-# install.packages('RStoolbox')
+# Installare RStoolbox
+install.packages('RStoolbox')
 library(RStoolbox)
 
 # Settare la cartella di lavoro
