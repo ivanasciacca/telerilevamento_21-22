@@ -104,20 +104,25 @@ multitemporal
 # Visualizzare in formato tabella
 View(multitemporal)
 
-# 1992
+# Creare un plot vuoto del 1992 con la funzione ggplot
+# dataset -> multitemporal
+# aesthetics (argomento) -> colonne utilizzate x = foresta e agricoltura , y = percentuali, color = colori diversi per le classi 
 ggplot(multitemporal, aes(x=class, y=percent_1992, color=class)) +
 geom_bar(stat="identity", fill="white")
+# Unire con il + la funzione geom_bar a ggplot per creare un plot a barre
+# stat (statistica, argomento) -> identity (il valore effettivo, ovvero della percentuale)
 
-# 2006
+# Esercizio: creare lo stesso grafico per il 2006
 ggplot(multitemporal, aes(x=class, y=percent_2006, color=class)) +
 geom_bar(stat="identity", fill="white")
 
-#pdf
+# Creare un pdf del grafico del 1992 con la funzione pdf
 pdf("percentages_1992.pdf")
 ggplot(multitemporal, aes(x=class, y=percent_1992, color=class)) +
 geom_bar(stat="identity", fill="white")
 dev.off()
 
+# Creare un pdf del grafico relativo al 2006
 pdf("percentages_2006.pdf")
 ggplot(multitemporal, aes(x=class, y=percent_2006, color=class)) +
 geom_bar(stat="identity", fill="white")
