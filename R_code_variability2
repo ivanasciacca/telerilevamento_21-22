@@ -4,6 +4,7 @@
 library(raster)
 library(RStoolbox)
 library(ggplot2)
+library(patchwork)
 
 # Settare la cartella di lavoro
 setwd("C:/lab/")
@@ -26,3 +27,31 @@ ggRGB(sen, 2, 1, 3) # mettiamo la banda del NIR nella componente del green
 # Analisi multivariata
 sen_pca <- rasterPCA(sen)
 sen_pca
+
+# Summery è una funzione generica che riepiloga i risulati ottenuti con altre funzioni utilizzate
+# Importance of components: quanto spiega della variabilità iniziale ogni singola componente
+summary(sen_pca$model)
+
+# Plot della mappa
+plot(sen_pca$map)
+
+# prima componente con maggiore informazione, la seconda un pò meno, terza solo rumore, quarta solo di controllo (banda vuota)
+
+pc1 <- sen_pca$map$PC1
+pc2 <- sen_pca$map$PC2
+pc3 <- sen_pca$map$PC3
+
+# Aprire un ggplot vuoto e associare una geometria raster
+g1 <- ggplot() +
+geom_raster(pc1, mapping=aes(x=x, y=y, fill=PC1))
+
+# x ed y rappresentano x e y della mappa, fill i nomi dei layer (PC1)
+
+g2 <- ggplot() +
+geom_raster(pc2, mapping=aes(x=x, y=y, fill=PC2))
+
+g3 <- ggplot() +
+geom_raster(pc3, mapping=aes(x=x, y=y, fill=PC3))
+
+# Plot uno accanto all'altro g1, g2, g3
+g1 + g2 + g3
