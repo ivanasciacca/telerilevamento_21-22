@@ -1,12 +1,17 @@
+# Richiamare le librerie
 library(raster)
 library(RStoolbox)
 library(ggplot2)
 library(patchwork)
+
+# Installare viridis
+install.packages("viridis")
 library(viridis)
 
+# Settare la cartella di lavoro
 setwd("C:/lab/")
 
-# Esercizio: importa l'immagine Similaun
+# Esercizio: importa l'immagine Similaun 
 sen <- brick("sentinel.png")
 sen
 
@@ -17,13 +22,19 @@ sen
 # Esercizio: plot l'immagine con la funzione ggRGB
 ggRGB(sen, 1, 2, 3, stretch="lin")
 ggRGB(sen, 1, 2, 3) # altro modo di scrivere la funzione ggRGB
-ggRGB(sen, 2, 1, 3) # per cambiare colore alle bande NIR sulla componente g
+ggRGB(sen, 2, 1, 3) # per cambiare colore alla banda NIR sulla componente g
 
+# viola = roccia
+# verde chiaro = prateria
+# verde scuro = bosco
+# nero = acqua 
+
+# Mettere i grafici uno accanto all'altro tramite ggplot
 g1 <- ggRGB(sen, 1, 2, 3)
 g2 <- ggRGB(sen, 2, 1, 3)
 g1+g2 # patchwork
 
-# Esercizio: plot il grafico uno sopra l'altro
+# Esercizio: plot i grafici uno sopra l'altro
 g1/g2
 
 # Esercizio: plot i due grafici (2x2)
