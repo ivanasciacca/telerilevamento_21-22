@@ -5,6 +5,7 @@ library(raster)
 library(RStoolbox)
 library(ggplot2)
 library(patchwork)
+library(viridis)
 
 # Settare la cartella di lavoro
 setwd("C:/lab/")
@@ -51,7 +52,85 @@ g2 <- ggplot() +
 geom_raster(pc2, mapping=aes(x=x, y=y, fill=PC2))
 
 g3 <- ggplot() +
-geom_raster(pc3, mapping=aes(x=x, y=y, fill=PC3))
+geom_raster(pc3, mapping=aes(x=x, y=y, fill=PC3)) # molto rumore di fondo
 
 # Plot uno accanto all'altro g1, g2, g3
 g1 + g2 + g3
+
+
+# Deviazione standard sulla componente principale PC1
+# Calcolare la variabilità sulla componente che ci da più informazioni, utilizzando la funzione focal
+sd3 <- focal(pc1, matrix(1/9, 3, 3), fun=sd)
+sd3
+
+# Fare un mappaggio con ggplot della deviazione standard della componente principale 
+ggplot() +
+geom_raster(sd3, mapping=aes(x=x, y=y, fill=layer))
+
+# Visualizzare la mappa con viridis 
+ggplot() +
+geom_raster(sd3, mapping=aes(x=x, y=y, fill=layer)) +
+scale_fill_viridis()
+
+# cividis
+ggplot() +
+geom_raster(sd3, mapping=aes(x=x, y=y, fill=layer)) +
+scale_fill_viridis(option= "cividis")
+
+# inferno
+ggplot() +
+geom_raster(sd3, mapping=aes(x=x, y=y, fill=layer)) +
+scale_fill_viridis(option= "inferno")
+
+# Plot le immagini insieme tramite la funzione patchwork
+im1 <- ggRGB(sen, 2, 1, 3)
+
+im2 <- ggplot() +
+geom_raster(pc1, mapping=aes(x=x, y=y, fill=PC1))
+
+im3 <- ggplot() +
+geom_raster(sd3, mapping=aes(x=x, y=y, fill=layer)) +
+scale_fill_viridis(option= "inferno")
+
+im1 + im2 + im3 
+
+# im1 è l'immagine originale con la la banda del NIR nella componente del green
+# im2 è l'immagine della prima componente principale su cui è stata calcolata la deviazione standard
+# im3 è l'immagine con la devizione standard utilizzando la leggenda inferno della funzione viridis
+
+
+# Calcolare l'eterogeneità in una finestra mobile 5x5, unità pixel 1/25
+sd5 <- focal(pc1, matrix(1/25, 5, 5), fun=sd)
+sd5
+
+# Plot im3 insieme a im4
+im3 <- ggplot() +
+geom_raster(sd3, mapping=aes(x=x, y=y, fill=layer)) +
+scale_fill_viridis(option= "inferno")
+
+im4 <- ggplot() +
+geom_raster(sd5, mapping=aes(x=x, y=y, fill=layer)) +
+scale_fill_viridis(option= "inferno")
+
+im3 + im4 
+
+# Calcolare l'eterogeneità in una finestra mobile 7x7, unità pixel 1/49
+sd7 <- focal(pc1, matrix(1/49, 7, 7), fun=sd)
+sd7
+
+# Plot im3, im4 e im5
+im3 <- ggplot() +
+geom_raster(sd3, mapping=aes(x=x, y=y, fill=layer)) +
+scale_fill_viridis(option= "inferno")
+
+im4 <- ggplot() +
+geom_raster(sd5, mapping=aes(x=x, y=y, fill=layer)) +
+scale_fill_viridis(option= "inferno")
+
+im5 <- ggplot() +
+geom_raster(sd7, mapping=aes(x=x, y=y, fill=layer)) +
+scale_fill_viridis(option= "inferno")
+
+im3 + im4 + im5
+
+
