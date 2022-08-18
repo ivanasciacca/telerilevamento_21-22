@@ -4,7 +4,7 @@ library(RStoolbox) # per la classificazione
 
 # install.packages("ggplot2")
 install.packages("ggplot2")
-library(ggplot2)
+library(ggplot2) # per la grafica
 
 # install.packages("patchwork")
 install.packages("patchwork")
@@ -58,17 +58,17 @@ freq(l06c$map)
 # class 1: 163444 pixels (area agricola e acqua)
 # class 2: 179282 pixels (foresta)
 
-## proporzioni
-tot92 <- 341292
+## Calcolare la proporzione della foresta del 1992
+tot92 <- 341292 
 prop_forest_92 <- 305802 / tot92
 prop_forest_92
 
-# percentuale 
+# Calcolare la percentuale di foresta del 1992 
 tot92 <- 341292
 perc_forest_92 <- 305802 * 100 / tot92
 perc_forest_92
 
-# esercizio: calcolare la percentuale di area agricola nel 1992
+# Esercizio: calcolare la percentuale di area agricola nel 1992
 perc_agr_92 <- 100 - perc_forest_92
 perc_agr_92
 
@@ -76,7 +76,7 @@ perc_agr_92
 # percent_agr_92: 10.39872
 
 
-# percentuale del 2006
+# Calcolare la percentuale di foresta del 2006
 tot_06 <- 342726
 percent_forest_06 <- 179282 *100 / tot_06
 percent_forest_06
@@ -93,7 +93,7 @@ percent_agr_06
 # percent_forest_06: 52.31059
 # percent_agr_06: 47.68941
 
-# costruire un dataframe con questi dati
+# Costruire un dataframe con questi dati
 # Colonne (campi)
 class <- c("Forest", "Agriculture")
 percent_1992 <- c(89.60128, 10.39872)
@@ -101,6 +101,7 @@ percent_2006 <- c(52.31059, 47.68941)
 
 multitemporal <- data.frame(class, percent_1992, percent_2006)
 multitemporal 
+# Visualizzare in formato tabella
 View(multitemporal)
 
 # 1992
