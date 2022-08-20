@@ -83,3 +83,7 @@ plot(elev, col=cl)
 plot(prec, col=cl)
 plot(temp, col=cl)
 plot(vege, col=cl)
+
+# Altro metodo
+final <- stack(preds, p1)
+plot(final, col=cl)
