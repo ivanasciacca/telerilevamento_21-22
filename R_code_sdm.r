@@ -60,3 +60,26 @@ points(species[occ == 1, ], pch=19)
 
 # La specie è localizzata verso le quote più basse, in aree ricche di vegetazione, con temperature medio-alte e molte precipitazione
 
+
+#
+datasdm <- sdmData(train=species, predictors=preds)
+datasdm
+
+# Creare il modello 
+m1 <- sdm(Occurrence ~ elevation + precipitation + temperature + vegetation, data=datasdm, methods = "glm")
+m1
+
+# Mappa di previsione della presenza della specie 
+p1 <- predict(m1, newdata=preds) 
+p1
+
+plot(p1, col=cl)
+points(species[occ == 1,], pch=19)
+
+#
+par(mfrow=c(2,3))
+plot(p1, col=cl)
+plot(elev, col=cl)
+plot(prec, col=cl)
+plot(temp, col=cl)
+plot(vege, col=cl)
