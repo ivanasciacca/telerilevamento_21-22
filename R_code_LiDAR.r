@@ -6,6 +6,10 @@ library(rgdal)
 library(viridis)
 library(ggplot2)
 
+# Installare il pacchetto LidR
+install.packages("LidR")
+library(LidR)
+
 # Settare la cartella di lavoro
 setwd("C:/lab/")
 
@@ -65,15 +69,24 @@ difference_chm <- chm_20013-chm_2004
 chm_2013r <- resample(chm_2013, chm_2004)
 difference_chm <- chm_2013r-chm_2004
 
+# Plot difference_chm con la scala di colori vridis
 ggplot() +
 geom_raster(difference_chm, mapping =aes(x=x, y=y, fill=layer)) + 
   scale_fill_viridis() +
   ggtitle("CHM difference San Genesio/Jenesien")
 
+# In blu: valori negativi dove sono stati effettuati i tagli della vegatazione
+# In giallo: valori positi dove è aumentata la vegetazione
+# In verde: aree che sono rimaste invariate 
+
+
 # Reading the point cloud
 point_cloud <- readLAS("point_cloud.laz")
 
+# Plot point_cloud
 plot(point_cloud)
+
+#
                     
 
 
