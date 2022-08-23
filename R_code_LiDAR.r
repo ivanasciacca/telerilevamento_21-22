@@ -86,7 +86,7 @@ point_cloud <- readLAS("point_cloud.laz")
 # Plot point_cloud
 plot(point_cloud)
 
-#
+
                     
 
 
