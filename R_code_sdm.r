@@ -61,11 +61,11 @@ points(species[occ == 1, ], pch=19)
 # La specie è localizzata verso le quote più basse, in aree ricche di vegetazione, con temperature medio-alte e molte precipitazione
 
 
-#
+# La funzione sdmDate che crea un oggetto con tutti i dati, train (dati a terra, in questo caso la specie) e predictors (i predittori)
 datasdm <- sdmData(train=species, predictors=preds)
 datasdm
 
-# Creare il modello 
+# Creare il modello lineare generalizzato
 m1 <- sdm(Occurrence ~ elevation + precipitation + temperature + vegetation, data=datasdm, methods = "glm")
 m1
 
@@ -73,10 +73,13 @@ m1
 p1 <- predict(m1, newdata=preds) 
 p1
 
+# Plot della mappa di previsione della specie con la distribuzione della specie originale (points)
 plot(p1, col=cl)
 points(species[occ == 1,], pch=19)
 
-#
+# I punti neri sono i punti originali della presenza della specie, la previsione è più alta, tranne in corrispondenza del blu dove la previsione è bassa.
+
+# Plot dei predittori e della mappa di previsione, costruendo un par mfrow in 2 righe e 3 colonne
 par(mfrow=c(2,3))
 plot(p1, col=cl)
 plot(elev, col=cl)
@@ -84,6 +87,6 @@ plot(prec, col=cl)
 plot(temp, col=cl)
 plot(vege, col=cl)
 
-# Altro metodo
+# Metodo alternativo tramite l'uso della funzione stack
 final <- stack(preds, p1)
 plot(final, col=cl)
