@@ -6,7 +6,7 @@ library(raster)
 # Settaggio cartella di lavoro 
 setwd("C:/lab/")
 
-# Importare l'immagine satellitare e assegnare all'ogetto l2011 la funzione brick
+# Importare l'immagine satellitare e assegnare la funzione brick all'oggetto l2011
 l2011 <- brick("p224r63_2011.grd")
 l2011
 
