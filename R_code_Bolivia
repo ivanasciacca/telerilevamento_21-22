@@ -1,6 +1,32 @@
-# 
+# Richiamare la libreria raster
 library(raster)
 
 # Settare la cartella di lavoro
 setwd("C:/lab/Bolivia/")
 
+
+# Caricare e plottare i RasterLayer delle prime 4 bande del 2022
+
+B1 <- raster("LC09_L2SP_230072_20220814_20220816_02_T1_SR_B1.tif")
+B1
+plot(B1)
+
+B2 <- raster("LC09_L2SP_230072_20220814_20220816_02_T1_SR_B2.tif")
+B2
+plot(B2)
+
+B3 <- raster("LC09_L2SP_230072_20220814_20220816_02_T1_SR_B3.tif")
+B3
+plot(B3)
+
+B4 <- raster("LC09_L2SP_230072_20220814_20220816_02_T1_SR_B4.tif")
+B4
+plot(B4)
+
+
+#
+par(mfrow=c(2,2))
+plot(B1)
+plot(B2)
+plot(B3)
+plot(B4)
