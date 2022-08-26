@@ -1,0 +1,6 @@
+# 
+library(raster)
+
+# Settare la cartella di lavoro
+setwd("C:/lab/Bolivia/")
+
