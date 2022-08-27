@@ -54,6 +54,9 @@ ndvi02 = dvi02 / (B4_02 + B3_02)
 ndvi02
 
 # Calcolare la differenza di DVI tra il 2020 e il 2002
-dvi_dif = dvi02 - dvi22
+
+dvi22r <- resample(dvi22, dvi02)
+
+dvi_dif = dvi02 - dvi22r
 cld <- colorRampPalette(c('blue', 'white', 'red')) (100)
 plot(dvi_dif, col=cld) 
