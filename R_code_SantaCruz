@@ -50,6 +50,8 @@ plot(B4_02, col=clr_02)
 # Calcolare l'indice DVI e NDVI del 2022
 dvi22 = B4_22 - B3_22
 dvi22
+cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100)
+plot(dvi22, col=cl)
 
 ndvi22 = dvi22 / (B4_22 + B3_22)
 ndvi22
@@ -57,6 +59,8 @@ ndvi22
 # Calcolare l'indice DVI e NDVI del 2002
 dvi02 = B4_02 - B3_02
 dvi02
+cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100)
+plot(dvi02, col=cl)
 
 ndvi02 = dvi02 / (B4_02 + B3_02)
 ndvi02
