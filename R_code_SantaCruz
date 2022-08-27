@@ -67,5 +67,8 @@ ndvi02
 dvi22r <- resample(dvi22, dvi02)
 
 dvi_dif = dvi02 - dvi22r
+dvi_dif
 cld <- colorRampPalette(c('blue', 'white', 'red')) (100)
 plot(dvi_dif, col=cld) 
+
+# In rosso le aree che sono diventate agricole
