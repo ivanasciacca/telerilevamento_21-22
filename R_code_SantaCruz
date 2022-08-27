@@ -63,6 +63,7 @@ ndvi02
 
 # Calcolare la differenza di DVI tra il 2020 e il 2002
 
+# I due dvi hanno estenzione diverse, quindi bisogna adattare l'estenzione del dvi22 basandoci su quella del dvi02 grazie alla funzione resample 
 dvi22r <- resample(dvi22, dvi02)
 
 dvi_dif = dvi02 - dvi22r
