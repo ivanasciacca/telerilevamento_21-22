@@ -40,3 +40,15 @@ plot(B4_02, col=clr_02)
 
 
 # Calcolare l'indice DVI e NDVI del 2022
+dvi22 = B4_22 - B3_22
+dvi22
+
+ndvi22 = dvi22 / (B4_22 + B3_22)
+ndvi22
+
+# Calcolare l'indice DVI e NDVI del 2002
+dvi02 = B4_02 - B3_02
+dvi02
+
+ndvi02 = dvi02 / (B4_02 + B3_02)
+ndvi02
