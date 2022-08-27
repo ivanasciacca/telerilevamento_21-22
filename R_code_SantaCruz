@@ -1,22 +1,26 @@
-# Richiamare le librerie
+# Richiamare la libreria raster
 library(raster)
 
 # Settare la cartella di lavoro 
 setwd("C:/lab/Santa Cruz")
 
 # Caricare i RasterLayer del 2022 e plottare con la funzione colorRampPalette
-#B3 -> banda red
-#B4 -> banda nir
+# B3 -> banda red
+# B4 -> banda nir
 
 B3_22 <- raster("LC09_L2SP_230072_20220814_20220816_02_T1_SR_B3.tif")
 B3_22
 cl_22 <- colorRampPalette(c("blue", "gold2", "red")) (500)
 plot(B3_22, col=cl_22)
 
+# In blu area forestale, in giallo e rosso le aree agricole e suolo nudo
+
 B4_22 <- raster("LC09_L2SP_230072_20220814_20220816_02_T1_SR_B4.tif")
 B4_22
 clr_22 <- colorRampPalette(c("blue", "green", "yellow")) (500)
 plot(B4_22, col=clr_22)
+
+# In blu area forestale, in verde e in giallo le aree agricole e suolo nudo
 
 
 # Caricare i RasterLayer del 2002 e plottare con la funzione colorRampPalette
@@ -25,13 +29,17 @@ B3_02
 cl_02 <- colorRampPalette(c("blue", "gold2", "red")) (500)
 plot(B3_02, col=cl_02)
 
+# In blu area forestale, in giallo e rosso le aree agricole e suolo nudo
+
 B4_02 <- raster("LE07_L2SP_230072_20020620_20200916_02_T1_SR_B4.tif")
 B4_02
 clr_02 <- colorRampPalette(c("blue", "green", "yellow")) (500)
 plot(B4_02, col=clr_02)
 
+# In blu area fiumi e laghi, in verde area forestale e in giallo le aree agricole e suolo nudo
 
-# Creare un multiframe in 2 colonne e 2 righe
+
+# Creare un multiframe in 2 colonne e 2 righe per mettere in relazione le bande B3 e B4 sia del 2022 che quelle del 2002
 par(mfrow=c(2,2))
 plot(B3_22, col=cl_22)
 plot(B4_22, col=clr_22)
