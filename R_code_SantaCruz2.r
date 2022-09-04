@@ -39,6 +39,11 @@ plot(ln2002)
 # Con la funzione plotRGB è possibile visualizzare l'immagine a colori naturali, r = 3, g = 2, b = 1 
 plotRGB(ln2002, 3, 2, 1, stretch="hist")
 
+# Salvare l'immagine in RGB con la funzione jpeg
+jpeg("ln2002.jpeg")
+plotRGB(ln2002, 3, 2, 1, stretch="hist")
+dev.off()
+
 
 
 
@@ -78,7 +83,10 @@ plot(ln2022)
 # Con la funzione plotRGB è possibile visualizzare l'immagine a colori naturali, r = 3, g = 2, b = 1 
 plotRGB(ln2022, 3, 2, 1, stretch="hist")
 
-
+# Salvare l'immagine in RGB con la funzione jpeg
+jpeg("ln2022.jpeg")
+plotRGB(ln2022, 3, 2, 1, stretch="hist")
+dev.off()
 
 
 
