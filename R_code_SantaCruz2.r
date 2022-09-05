@@ -131,31 +131,84 @@ plotRGB(ln2022, 3, 2, 1, stretch="lin")
 
    ## Indici spettrali di vegetazione ##
 
-# Calcolare il DVI del 2002
+# Calcolare il DVI del 2002 e plottare l'immagine utilizzando una colorRampPalette
 dviln2002 = ln2002[[4]] - ln2002[[3]]
 dviln2002
 
 cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100) 
 plot(dviln2002, col=cl)
 
-# Calcolare il DVI del 2014
+# Salvare l'immagine del dviln2002 con la funzione jpeg
+jpeg("dviln2002.jpeg")
+cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100) 
+plot(dviln2002, col=cl)
+dev.off()
+
+# Calcolare il DVI del 2014 e plottare l'immagine utilizzando una colorRampPalette
 dviln2014 = ln2014[[4]] - ln2014[[3]]
 dviln2014
 
 cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100) 
 plot(dviln2014, col=cl)
 
-# Calcolare il DVI del 2022
+# Salvare l'immagine del dviln2014 con la funzione jpeg
+jpeg("dviln2014.jpeg")
+cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100) 
+plot(dviln2014, col=cl)
+dev.off()
+
+# Calcolare il DVI del 2022 e plottare l'immagine utilizzando una colorRampPalette
 dviln2022 = ln2022[[4]] - ln2022[[3]]
 dviln2022
 
 cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100) 
 plot(dviln2022, col=cl)
 
-# Calcolare la differenza di DVI nell'ultimo ventennio 2002 - 2022
-dviln2022r = resample(dviln2022, dviln2002)
-dif_dvi = dviln2002 - dviln2022r
-dif_dvi
+# Salvare l'immagine del dviln2022 con la funzione jpeg
+jpeg("dviln2022.jpeg")
+cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100) 
+plot(dviln2022, col=cl)
+dev.off()
 
-cld <- colorRampPalette(c('blue','white','red'))(100)
-plot(dif_dvi, col=cld)
+
+# Calcolare la differenza di DVI nell'ultimo ventennio 2002 - 2022
+## I due DVI hanno estenzione diverse, quindi bisogna adattare l'estenzione del dvi22 basandoci su quella del dvi02 grazie alla funzione resample 
+dviln2022r = resample(dviln2022, dviln2002)
+dvi_dif = dviln2002 - dviln2022r
+dvi_dif
+
+# Plottare e salvare in jpeg, la differenza di DVI dal 2002 al 2022 con una leggenda costruita con la dunzione colorRampPalette
+jpeg("dvi_dif.jpeg")
+cld <- colorRampPalette(c('blue','white','magenta'))(100)
+plot(dvi_dif, col=cld)
+dev.off()
+
+
+# Calcolare e plottare NDVI del 2002
+ndviln2002 = dviln2002 / ln2002[[4]] + ln2002[[3]]
+ndviln2002
+
+cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100)
+plot(ndviln2002, col=cl)
+
+# Calcolare e plottare NDVI del 2014
+ndviln2014 = dviln2014 / ln2014[[4]] + ln2014[[3]]
+ndviln2014
+
+cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100)
+plot(ndviln2014, col=cl)
+
+# Calcolare e plottare NDVI del 2022
+ndviln2022 = dviln2022 / ln2022[[4]] + ln2022[[3]]
+ndviln2022
+
+cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100)
+plot(ndviln2022, col=cl)
+
+# Creare un multiframe per poter mettere a confronto NDVI del 2002, 2014 e 2022 e salvare in jpeg
+jpeg("ndvi.jpeg")
+par(mfrow=c(1,3))
+plot(ndviln2002, col=cl)
+plot(ndviln2014, col=cl)
+plot(ndviln2022, col=cl)
+dev.off()
