@@ -129,3 +129,33 @@ plotRGB(ln2022, 3, 2, 1, stretch="lin")
 
 
 
+   ## Indici spettrali di vegetazione ##
+
+# Calcolare il DVI del 2002
+dviln2002 = ln2002[[4]] - ln2002[[3]]
+dviln2002
+
+cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100) 
+plot(dviln2002, col=cl)
+
+# Calcolare il DVI del 2014
+dviln2014 = ln2014[[4]] - ln2014[[3]]
+dviln2014
+
+cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100) 
+plot(dviln2014, col=cl)
+
+# Calcolare il DVI del 2022
+dviln2022 = ln2022[[4]] - ln2022[[3]]
+dviln2022
+
+cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100) 
+plot(dviln2022, col=cl)
+
+# Calcolare la differenza di DVI nell'ultimo ventennio 2002 - 2022
+dviln2022r = resample(dviln2022, dviln2002)
+dif_dvi = dviln2002 - dviln2022r
+dif_dvi
+
+cld <- colorRampPalette(c('blue','white','red'))(100)
+plot(dif_dvi, col=cld)
