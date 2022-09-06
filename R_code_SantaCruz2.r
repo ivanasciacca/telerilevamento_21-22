@@ -1,6 +1,9 @@
 # Richiamare le librerie 
 library(raster)
-
+library(RStoolbox)
+library(ggplot2) 
+library(patchwork)
+library(viridis)
 
 # Settare la cartella di lavoro Santa Cruz che è interna alla cartella lab
 setwd("C:/lab/Santa Cruz")
@@ -203,3 +206,87 @@ plot(ndviln2002, col=cl)
 plot(ndviln2014, col=cl)
 plot(ndviln2022, col=cl)
 dev.off()
+
+
+
+   ## Land cover ##
+
+# Classificare l'immagine del 2002 in due classi
+# Classe 1 = foresta
+# Classe 2 = suolo agricolo
+
+ln2002nC <- unsuperClass(ln2002, nClasses=2)
+ln2002nC
+plot(ln2002nC$map)
+
+# Calcolare la frequenza dei pixel che appartengono a ciascuna classe 
+freq(ln2002nC$map)
+
+# Classe 1 = 25088394
+# Classe 2 = 12897447
+
+# Calcolare la percentuale di foresta e di area agricola del 2002
+tot2002 <- 37985841
+
+perc_forest_2002 <- 25088394 * 100 / tot2002
+perc_forest_2002
+# Percentuale foresta = 66.0467
+
+perc_agr_2002 <- 100 - perc_forest_2002
+perc_agr_2002
+# Percentuale zona agricola = 33.9533
+
+
+
+# Classificare l'immagine del 2014 in due classi
+# Classe 1 = foresta
+# Classe 2 = suolo agricolo
+
+ln2014nC <- unsuperClass(ln2014, nClasses=2)
+ln2014nC
+plot(ln2014nC$map)
+
+# Calcolare la frequenza dei pixel che appartengono a ciascuna classe 
+freq(ln2014nC$map)
+
+# Classe 1 = 23698698
+# Classe 2 = 16983167
+
+# Calcolare la percentuale di foresta e di area agricola del 2014
+tot2014 <- 40681865
+
+perc_forest_2014 <- 23698698 * 100 / tot2014
+perc_forest_2014
+# Percentuale foresta = 58.25372
+
+perc_agr_2014 <- 100 - perc_forest_2014
+perc_agr_2014
+# Percentuale zona agricola = 41.74628
+
+
+
+# Classificare l'immagine del 2022 in due classi
+# Classe 1 = suolo agricolo
+# Classe 2 = foresta
+
+ln2022nC <- unsuperClass(ln2022, nClasses=2)
+ln2022nC
+plot(ln2022nC$map)
+
+# Calcolare la frequenza dei pixel che appartengono a ciascuna classe 
+freq(ln2022nC$map)
+
+# Classe 1 = 
+# Classe 2 = 
+
+# Calcolare la percentuale di foresta e di area agricola del 2022
+tot2022 <- 
+
+perc_forest_2022 <-  * 100 / tot2022
+perc_forest_2022
+# Percentuale foresta = 
+
+perc_agr_2022 <- 100 - perc_forest_2022
+perc_agr_2022
+# Percentuale zona agricola = 
+
