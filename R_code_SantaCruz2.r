@@ -212,8 +212,8 @@ dev.off()
    ## Land cover ##
 
 # Classificare l'immagine del 2002 in due classi
-# Classe 1 = foresta
-# Classe 2 = suolo agricolo
+# Classe 1 = suolo agricolo
+# Classe 2 = foresta
 
 ln2002nC <- unsuperClass(ln2002, nClasses=2)
 ln2002nC
@@ -228,13 +228,13 @@ freq(ln2002nC$map)
 # Calcolare la percentuale di foresta e di area agricola del 2002
 tot2002 <- 37985841
 
-perc_forest_2002 <- 25088394 * 100 / tot2002
-perc_forest_2002
-# Percentuale foresta = 66.0467
-
-perc_agr_2002 <- 100 - perc_forest_2002
+perc_agr_2002 <- 25088394 * 100 / tot2002
 perc_agr_2002
-# Percentuale zona agricola = 33.9533
+# Percentuale zona agricola = 66.0467
+
+perc_forest_2002 <- 100 - perc_forest_2002
+perc_forest_2002
+# Percentuale foresta = 33.9533
 
 
 
@@ -266,8 +266,8 @@ perc_agr_2014
 
 
 # Classificare l'immagine del 2022 in due classi
-# Classe 1 = suolo agricolo
-# Classe 2 = foresta
+# Classe 1 = foresta
+# Classe 2 = suolo agricolo
 
 ln2022nC <- unsuperClass(ln2022, nClasses=2)
 ln2022nC
@@ -276,17 +276,17 @@ plot(ln2022nC$map)
 # Calcolare la frequenza dei pixel che appartengono a ciascuna classe 
 freq(ln2022nC$map)
 
-# Classe 1 = 
-# Classe 2 = 
+# Classe 1 = 26127581
+# Classe 2 = 14666327
 
 # Calcolare la percentuale di foresta e di area agricola del 2022
-tot2022 <- 
+tot2022 <- 27593908
 
-perc_forest_2022 <-  * 100 / tot2022
+perc_forest_2022 <- 26127581 * 100 / tot2022
 perc_forest_2022
-# Percentuale foresta = 
+# Percentuale foresta = 94.68605
 
 perc_agr_2022 <- 100 - perc_forest_2022
 perc_agr_2022
-# Percentuale zona agricola = 
+# Percentuale zona agricola = 5.313952
 
