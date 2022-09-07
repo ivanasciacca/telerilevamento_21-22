@@ -1,10 +1,12 @@
+install.packages("LabRS")
+
 # Richiamare le librerie 
 library(raster)
 library(RStoolbox)
 library(ggplot2) 
 library(patchwork)
 library(viridis)
-
+library(LabRS)
 
 # Settare la cartella di lavoro Santa Cruz che è interna alla cartella lab
 setwd("C:/lab/Santa Cruz")
@@ -346,13 +348,10 @@ multitemporal
 # Visualizzare in formato tabella
 View(multitemporal)
 
+exptab(list("multitemporal"), file="tabelle.csv")
 
-
-#
-g1 <- ggRGB(ln2002, 3, 2, 1, stretch="lin") 
-g2 <- ggRGB(ln2014, 3, 2, 1, stretch="lin") 
-g3 <- ggRGB(ln2022, 3, 2, 1, stretch="lin") 
-g1 + g2 + g3 
+   
+## Deviazione standard ##
    
 sd_02 <- focal(B4_2002, matrix(1/9, 3, 3), fun=sd)
 
