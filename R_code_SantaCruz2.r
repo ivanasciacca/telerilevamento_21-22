@@ -1,12 +1,18 @@
+# Analizzare l'andamento della deforestazione negli ultimi venti anni in Bolivia, esattamente nel distretto di Santa Cruz.
+# Le immagini utilizzate sono state prese dai satelliti Landsat 7 (2002) e Landsat 8 (2014, 2022).
+
+
+# Installare il pacchetto LabRS
 install.packages("LabRS")
 
-# Richiamare le librerie 
+# Richiamare tutte le librerie da utilizzare 
 library(raster)
-library(RStoolbox)
-library(ggplot2) 
+library(RStoolbox) # per la classificazione delle immagini
+library(ggplot2) # per la grafica
 library(patchwork)
-library(viridis)
-library(LabRS)
+library(viridis) # leggende a colori per migliorare la leggibilità delle immagini
+library(LabRS) # per esportare i dati delle tabelle
+
 
 # Settare la cartella di lavoro Santa Cruz che è interna alla cartella lab
 setwd("C:/lab/Santa Cruz")
@@ -171,6 +177,7 @@ dev.off()
 # Calcolare la differenza di DVI nell'ultimo ventennio 2002 - 2022
 # I due DVI hanno estenzione diverse, quindi bisogna adattare l'estenzione del dvi22 basandoci su quella del dvi02 grazie alla funzione resample 
 dviln2022r = resample(dviln2022, dviln2002)
+
 dvi_dif = dviln2002 - dviln2022r
 dvi_dif
 
@@ -202,6 +209,7 @@ ndviln2022
 cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100)
 plot(ndviln2022, col=cl)
 
+
 # Creare un multiframe per poter mettere a confronto NDVI del 2002, 2014 e 2022 e salvare in jpeg
 jpeg("ndvi.jpeg")
 par(mfrow=c(1,3))
@@ -215,11 +223,12 @@ dev.off()
    ## Land cover ##
 
 # Classificare l'immagine del 2002 in due classi
-# Classe 1 = foresta
-# Classe 2 = suolo agricolo
+# Classe 1 = zona forestale (bianco)
+# Classe 2 = suolo agricolo (verde)
 
 ln2002nC <- unsuperClass(ln2002, nClasses=2)
 ln2002nC
+
 jpeg("ln2002nC")
 plot(ln2002nC$map)
 dev.off()
@@ -245,11 +254,12 @@ perc_agr_2002
 
 
 # Classificare l'immagine del 2014 in due classi
-# Classe 1 = foresta
-# Classe 2 = suolo agricolo
+# Classe 1 = zona forestale (bianco)
+# Classe 2 = suolo agricolo (verde)
 
 ln2014nC <- unsuperClass(ln2014, nClasses=2)
 ln2014nC
+
 jpeg("ln2014nC")
 plot(ln2014nC$map)
 dev.off()
@@ -278,11 +288,12 @@ perc_agr_2014
 
    ## Prova 1 ##
 
-# Classe 1 = foresta
-# Classe 2 = suolo agricolo 
+# Classe 1 = zona forestale (bianco) 
+# Classe 2 = suolo agricolo (verde)
 
 ln22nC <- unsuperClass(ln2022, nClasses=2)
 ln22nC
+
 jpeg("ln22nC")
 plot(ln22nC$map)
 dev.off()
@@ -307,11 +318,12 @@ perc_agr_22
 
 
   ## Prova 2 ##
-# Classe 1 = suolo agricolo
-# Classe 2 = foresta 
+# Classe 1 = suolo agricolo (bianco)
+# Classe 2 = zona forestale (verde) 
 
 ln2022nC <- unsuperClass(ln2022, nClasses=2)
 ln2022nC
+
 jpeg("ln2022nC")
 plot(ln2022nC$map)
 dev.off()
@@ -334,8 +346,11 @@ perc_agr_2022 <- 12807531 * 100 / tot2022
 perc_agr_2022
 # Percentuale zona agricola =  21.54082
 
+# La classificazione dell'immagine del 2022, porta a due risultati diversi prova 1 e prova 2.
+# Una possibile spiegazione può essere data da un elevato numero di pixel NA, cioè pixel non associati a nessuna delle due classi.
+# La prova 2 è quella che si avvicina di più al risultato atteso, ma comunque poco affidabile.
 
-# Costruire un dataframe con questi dati
+# Costruire un dataframe con i dati percentuali dell'area forestale e del suolo agricolo
 # Colonne (campi)
 class <- c("Forest", "Agriculture")
 percent_2002 <- c(45.17771, 23.3644)
