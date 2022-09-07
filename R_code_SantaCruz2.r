@@ -217,7 +217,9 @@ dev.off()
 
 ln2002nC <- unsuperClass(ln2002, nClasses=2)
 ln2002nC
+jpeg("ln2002nC")
 plot(ln2002nC$map)
+dev.off()
 
 # Calcolare la frequenza dei pixel che appartengono a ciascuna classe 
 freq(ln2002nC$map)
@@ -245,7 +247,9 @@ perc_agr_2002
 
 ln2014nC <- unsuperClass(ln2014, nClasses=2)
 ln2014nC
+jpeg("ln2014nC")
 plot(ln2014nC$map)
+dev.off()
 
 # Calcolare la frequenza dei pixel che appartengono a ciascuna classe 
 freq(ln2014nC$map)
@@ -268,12 +272,46 @@ perc_agr_2014
 
 
 # Classificare l'immagine del 2022 in due classi
+
+   ## Prova 1 ##
+
+# Classe 1 = foresta
+# Classe 2 = suolo agricolo 
+
+ln22nC <- unsuperClass(ln2022, nClasses=2)
+ln22nC
+jpeg("ln22nC")
+plot(ln22nC$map)
+dev.off()
+
+# Calcolare la frequenza dei pixel che appartengono a ciascuna classe 
+freq(ln22nC$map)
+
+# Classe 1 = 40480835
+# Classe 2 = 313073
+# NA 18663113 (non applicabile)
+
+# Calcolare la percentuale di foresta e di area agricola del 2022
+tot22 <- 59457021
+
+perc_forest_22 <- 40480835 * 100 / tot22
+perc_forest_22
+# Percentuale foresta = 68.0842
+
+perc_agr_22 <- 313073 * 100 / tot22
+perc_agr_22
+# Percentuale zona agricola =  0.5265535
+
+
+  ## Prova 2 ##
 # Classe 1 = suolo agricolo
 # Classe 2 = foresta 
 
 ln2022nC <- unsuperClass(ln2022, nClasses=2)
 ln2022nC
+jpeg("ln2022nC")
 plot(ln2022nC$map)
+dev.off()
 
 # Calcolare la frequenza dei pixel che appartengono a ciascuna classe 
 freq(ln2022nC$map)
@@ -309,5 +347,4 @@ View(multitemporal)
 
 
 
-ggplot(multitemporal, aes(x=class, y=percent_2002, color=class)) +
-geom_bar(stat="identity", fill="white")
+
