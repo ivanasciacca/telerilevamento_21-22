@@ -293,3 +293,21 @@ perc_agr_2022 <- 12807531 * 100 / tot2022
 perc_agr_2022
 # Percentuale zona agricola =  21.54082
 
+
+# Costruire un dataframe con questi dati
+# Colonne (campi)
+class <- c("Forest", "Agriculture")
+percent_2002 <- c(45.17771, 23.3644)
+percent_2014 <- c(39.66055, 28.58588)
+percent_2022 <- c(47.06993, 21.54082)
+
+multitemporal <- data.frame(class, percent_2002, percent_2014, percent_2022)
+multitemporal
+
+# Visualizzare in formato tabella
+View(multitemporal)
+
+
+
+ggplot(multitemporal, aes(x=class, y=percent_2002, color=class)) +
+geom_bar(stat="identity", fill="white")
