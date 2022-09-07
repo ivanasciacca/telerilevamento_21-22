@@ -226,9 +226,9 @@ freq(ln2002nC$map)
 # Classe 2 = 12897447
 
 # Calcolare la percentuale di foresta e di area agricola del 2002
-tot2002 <- 37985841
+tot2002 <- 55419711
 
-perc_agr_2002 <- 25088394 * 100 / tot2002
+perc_agr_2002 <- 25042175 * 100 / tot2002
 perc_agr_2002
 # Percentuale zona agricola = 66.0467
 
