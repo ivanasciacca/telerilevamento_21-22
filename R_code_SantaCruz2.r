@@ -153,6 +153,9 @@ cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100)
 plot(dviln2002, col=cl)
 dev.off()
 
+# In rosso sono indicate le zono con elevato indice DVI, quindi la vegetaione è in salute.
+# In giallo l'indice DVI è più basso, indica il suolo nudo. In blu rappresenta l'acqua dei fiumi e laghi.
+
 # Calcolare il DVI del 2014 
 dviln2014 = ln2014[[4]] - ln2014[[3]]
 dviln2014
@@ -163,6 +166,8 @@ cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100)
 plot(dviln2014, col=cl)
 dev.off()
 
+# In rosso alto indice DVI, in giallo basso indice DVI.
+
 # Calcolare il DVI del 2022 
 dviln2022 = ln2022[[4]] - ln2022[[3]]
 dviln2022
@@ -172,6 +177,8 @@ jpeg("dviln2022.jpeg")
 cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100) 
 plot(dviln2022, col=cl)
 dev.off()
+
+# L'area in giallo si estende, ciò segnala un peggioramento dello stato di salute della vegetazione.
 
 
 # Calcolare la differenza di DVI nell'ultimo ventennio 2002 - 2022
@@ -187,6 +194,7 @@ cld <- colorRampPalette(c('blue','white','magenta'))(100)
 plot(dvi_dif, col=cld)
 dev.off()
 
+# Con il color magenta vengono individuate le zone dove varia l'indice DVI nel corso degli ultimi vent'anni.
 
 # Calcolare e plottare NDVI del 2002
 ndviln2002 = dviln2002 / ln2002[[4]] + ln2002[[3]]
@@ -218,6 +226,7 @@ plot(ndviln2014, col=cl)
 plot(ndviln2022, col=cl)
 dev.off()
 
+# NDVI è l'indice DVI normalizzato, quindi quelli relativi al 2014 e 2022 non devono essere ricampionati.
 
 
    ## Land cover ##
