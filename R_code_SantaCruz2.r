@@ -372,8 +372,6 @@ multitemporal
 # Visualizzare in formato tabella
 View(multitemporal)
 
-exptab(list("multitemporal"), file="tabelle.csv")
-
    
 ## Deviazione standard ##
    
