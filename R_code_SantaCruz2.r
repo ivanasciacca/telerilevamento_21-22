@@ -354,3 +354,9 @@ g2 <- ggRGB(ln2014, 3, 2, 1, stretch="lin")
 g3 <- ggRGB(ln2022, 3, 2, 1, stretch="lin") 
 g1 + g2 + g3 
    
+sd_02 <- focal(B4_2002, matrix(1/9, 3, 3), fun=sd)
+
+ggplot() +
+geom_raster(sd_02, mapping =aes(x=x, y=y, fill=layer)) +
+scale_fill_viridis(option = magma) +
+ggtitle("Deviazione standard del 2002")
