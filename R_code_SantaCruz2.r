@@ -5,6 +5,7 @@ library(ggplot2)
 library(patchwork)
 library(viridis)
 
+
 # Settare la cartella di lavoro Santa Cruz che è interna alla cartella lab
 setwd("C:/lab/Santa Cruz")
 
@@ -348,3 +349,4 @@ View(multitemporal)
 
 
 
+   
