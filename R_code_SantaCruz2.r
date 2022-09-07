@@ -268,8 +268,8 @@ perc_agr_2014
 
 
 # Classificare l'immagine del 2022 in due classi
-# Classe 1 = foresta
-# Classe 2 = suolo agricolo
+# Classe 1 = suolo agricolo
+# Classe 2 = foresta 
 
 ln2022nC <- unsuperClass(ln2022, nClasses=2)
 ln2022nC
@@ -278,17 +278,18 @@ plot(ln2022nC$map)
 # Calcolare la frequenza dei pixel che appartengono a ciascuna classe 
 freq(ln2022nC$map)
 
-# Classe 1 = 
-# Classe 2 = 
+# Classe 1 = 12807531
+# Classe 2 = 27986377
+# NA 18663113 (non applicabile)
 
 # Calcolare la percentuale di foresta e di area agricola del 2022
-tot2022 <- 
+tot2022 <- 59457021
 
-perc_forest_2022 <-  * 100 / tot2022
+perc_forest_2022 <- 27986377 * 100 / tot2022
 perc_forest_2022
-# Percentuale foresta = 
+# Percentuale foresta = 47.06993
 
-perc_agr_2022 <-  * 100 / tot2022
+perc_agr_2022 <- 12807531 * 100 / tot2022
 perc_agr_2022
-# Percentuale zona agricola = 
+# Percentuale zona agricola =  21.54082
 
