@@ -348,5 +348,9 @@ View(multitemporal)
 
 
 
-
+#
+g1 <- ggRGB(ln2002, 3, 2, 1, stretch="lin") 
+g2 <- ggRGB(ln2014, 3, 2, 1, stretch="lin") 
+g3 <- ggRGB(ln2022, 3, 2, 1, stretch="lin") 
+g1 + g2 + g3 
    
