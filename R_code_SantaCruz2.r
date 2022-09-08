@@ -60,10 +60,13 @@ dev.off()
    ##  2014  ##
   
 # Caricare i RasterLayer delle singole bande del 2014
-# B1 = banda del blu
-# B2 = banda del verde
-# B3 = banda del rosso
-# B4 = banda de NIR
+
+  ### Bande Landsat 8 ###
+# B1 = banda coastal/aerosol
+# B2 = banda del blu
+# B3 = banda del verde
+# B4 = banda del rosso
+# B5 = banda de NIR 
 
 B1_2014 <- raster("LC08_L2SP_230072_20141019_20200910_02_T1_SR_B1.tif")
 B1_2014
@@ -77,8 +80,11 @@ B3_2014
 B4_2014 <- raster("LC08_L2SP_230072_20141019_20200910_02_T1_SR_B4.tif")
 B4_2014
 
+B5_2014 <- raster("LC08_L2SP_230072_20141019_20200910_02_T1_SR_B5.tif")
+B5_2014
+
 # Importare i dati tutti insieme, tramite la funzione list che crea una lista di file
-rlist14 <- list(B1_2014, B2_2014, B3_2014, B4_2014)
+rlist14 <- list(B1_2014, B2_2014, B3_2014, B4_2014, B5_2014)
 
 # La funzione stack ci consente di mettere insieme tutti i file in un blocco comune
 # Con la funzione plot, visualizziamo l'immagine
@@ -86,22 +92,28 @@ ln2014 <- stack(rlist14)
 ln2014
 plot(ln2014)
 
-# Con la funzione plotRGB è possibile visualizzare l'immagine a colori naturali, r = 3, g = 2, b = 1 
-plotRGB(ln2014, 3, 2, 1, stretch="lin")
+# Con la funzione plotRGB è possibile visualizzare l'immagine a colori naturali, r = 4, g = 3, b = 2 
+plotRGB(ln2014, 4, 3, 2, stretch="lin")
+
+# Falsi colori
+ plotRGB(ln2014, 4, 5, 3, stretch="lin")
 
 # Salvare l'immagine in RGB con la funzione jpeg
 jpeg("ln2014.jpeg")
-plotRGB(ln2014, 3, 2, 1, stretch="lin")
+plotRGB(ln2014, 4, 3, 2, stretch="lin")
 dev.off()
 
 
    ## 2022 ##
 
 # Caricare i RasterLayer delle singole bande del 2022
-# B1 = banda del blu
-# B2 = banda del verde
-# B3 = banda del rosso
-# B4 = banda de NIR
+
+   ### Bande Landsat 8 ###
+# B1 = banda coastal/aerosol
+# B2 = banda del blu
+# B3 = banda del verde
+# B4 = banda del rosso
+# B5 = banda de NIR (da inserire)
 
 B1_2022 <- raster("LC09_L2SP_230072_20220814_20220816_02_T1_SR_B1.tif")
 B1_2022
@@ -157,7 +169,7 @@ dev.off()
 # In giallo l'indice DVI è più basso, indica il suolo nudo. In blu rappresenta l'acqua dei fiumi e laghi.
 
 # Calcolare il DVI del 2014 
-dviln2014 = ln2014[[4]] - ln2014[[3]]
+dviln2014 = ln2014[[5]] - ln2014[[4]]
 dviln2014
 
 # Plottare l'immagine utilizzando una colorRampPalette e salvare in jpeg
@@ -204,7 +216,7 @@ cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100)
 plot(ndviln2002, col=cl)
 
 # Calcolare e plottare NDVI del 2014
-ndviln2014 = dviln2014 / ln2014[[4]] + ln2014[[3]]
+ndviln2014 = dviln2014 / ln2014[[5]] + ln2014[[4]]
 ndviln2014
 
 cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100)
@@ -373,11 +385,4 @@ multitemporal
 View(multitemporal)
 
    
-## Deviazione standard ##
-   
-sd_02 <- focal(B4_2002, matrix(1/9, 3, 3), fun=sd)
 
-ggplot() +
-geom_raster(sd_02, mapping =aes(x=x, y=y, fill=layer)) +
-scale_fill_viridis(option = magma) +
-ggtitle("Deviazione standard del 2002")
