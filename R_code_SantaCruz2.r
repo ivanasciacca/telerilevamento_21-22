@@ -2,8 +2,6 @@
 # Le immagini utilizzate sono state prese dai satelliti Landsat 7 (2002) e Landsat 8 (2014, 2022).
 
 
-# Installare il pacchetto LabRS
-install.packages("LabRS")
 
 # Richiamare tutte le librerie da utilizzare 
 library(raster)
@@ -11,7 +9,6 @@ library(RStoolbox) # per la classificazione delle immagini
 library(ggplot2) # per la grafica
 library(patchwork)
 library(viridis) # leggende a colori per migliorare la leggibilità delle immagini
-library(LabRS) # per esportare i dati delle tabelle
 
 
 # Settare la cartella di lavoro Santa Cruz che è interna alla cartella lab
