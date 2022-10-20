@@ -48,8 +48,8 @@ plot(ln2002)
 # Con la funzione plotRGB è possibile visualizzare l'immagine a colori naturali, r = 3, g = 2, b = 1 
 plotRGB(ln2002, 3, 2, 1, stretch="lin")
 
-# Falsi colori
- plotRGB(ln2002fc, 3, 4, 2, stretch="lin")
+# Falsi colori inserendo la banda 4 dell'infrarosso vicino g = 4
+ plotRGB(ln2002, 3, 4, 2, stretch="lin")
 
 # Salvare le immagini in RGB con la funzione jpeg
 jpeg("ln2002.jpeg")
@@ -57,7 +57,7 @@ plotRGB(ln2002, 3, 2, 1, stretch="lin")
 dev.off()
 
 jpeg("ln2002fc.jpeg")
-plotRGB(ln2002fc, 3, 4, 2, stretch="lin")
+plotRGB(ln2002, 3, 4, 2, stretch="lin")
 dev.off()
 
 
