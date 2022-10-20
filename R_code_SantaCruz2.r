@@ -2,7 +2,6 @@
 # Le immagini utilizzate sono state prese dai satelliti Landsat 7 (2002) e Landsat 8 (2014, 2022).
 
 
-
 # Richiamare tutte le librerie da utilizzare 
 library(raster)
 library(RStoolbox) # per la classificazione delle immagini
@@ -179,7 +178,7 @@ dev.off()
 
    ## Indici spettrali di vegetazione ##
 
-# Calcolare il DVI del 2002 
+ # Calcolare il DVI del 2002 
 dviln2002 = ln2002[[4]] - ln2002[[3]]
 dviln2002
 
@@ -192,7 +191,7 @@ dev.off()
 # In rosso sono indicate le zono con elevato indice DVI, quindi la vegetaione è in salute.
 # In giallo l'indice DVI è più basso, indica il suolo nudo. In blu rappresenta l'acqua dei fiumi e laghi.
 
-# Calcolare il DVI del 2014 
+ # Calcolare il DVI del 2014 
 dviln2014 = ln2014[[5]] - ln2014[[4]]
 dviln2014
 
@@ -204,8 +203,8 @@ dev.off()
 
 # In rosso alto indice DVI, in giallo basso indice DVI.
 
-# Calcolare il DVI del 2022 
-dviln2022 = ln2022[[4]] - ln2022[[3]]
+ # Calcolare il DVI del 2022 
+dviln2022 = ln2022[[5]] - ln2022[[4]]
 dviln2022
 
 # Plottare l'immagine utilizzando una colorRampPalette e salvare in jpeg
@@ -233,21 +232,21 @@ dev.off()
 # Con il color magenta vengono individuate le zone dove varia l'indice DVI nel corso degli ultimi vent'anni.
 
 # Calcolare e plottare NDVI del 2002
-ndviln2002 = dviln2002 / ln2002[[4]] + ln2002[[3]]
+ndviln2002 = dviln2002 / (ln2002[[4]] + ln2002[[3]])
 ndviln2002
 
 cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100)
 plot(ndviln2002, col=cl)
 
 # Calcolare e plottare NDVI del 2014
-ndviln2014 = dviln2014 / ln2014[[5]] + ln2014[[4]]
+ndviln2014 = dviln2014 / (ln2014[[5]] + ln2014[[4]])
 ndviln2014
 
 cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100)
 plot(ndviln2014, col=cl)
 
 # Calcolare e plottare NDVI del 2022
-ndviln2022 = dviln2022 / ln2022[[4]] + ln2022[[3]]
+ndviln2022 = dviln2022 / (ln2022[[5]] + ln2022[[4]])
 ndviln2022
 
 cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100)
