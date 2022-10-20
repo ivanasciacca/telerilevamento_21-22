@@ -51,7 +51,7 @@ plotRGB(ln2002, 3, 2, 1, stretch="lin")
 # Falsi colori inserendo la banda 4 dell'infrarosso vicino g = 4
  plotRGB(ln2002, 3, 4, 2, stretch="lin")
 
-# Salvare le immagini in RGB con la funzione jpeg
+# Salvare le immagini in RGB sia a colori naturali che in falsi colori, con la funzione jpeg
 jpeg("ln2002.jpeg")
 plotRGB(ln2002, 3, 2, 1, stretch="lin")
 dev.off()
@@ -99,16 +99,16 @@ plot(ln2014)
 # Con la funzione plotRGB è possibile visualizzare l'immagine a colori naturali, r = 4, g = 3, b = 2 
 plotRGB(ln2014, 4, 3, 2, stretch="lin")
 
-# Falsi colori
- plotRGB(ln2014fc, 4, 5, 3, stretch="lin")
+# Falsi colori inserendo la banda 5 del NIR, g = 5 
+ plotRGB(ln2014, 4, 5, 3, stretch="lin")
 
-# Salvare l'immagine in RGB con la funzione jpeg
+# Salvare l'immagine in RGB sia a colori naturali che con i falsi colori, con la funzione jpeg
 jpeg("ln2014.jpeg")
 plotRGB(ln2014, 4, 3, 2, stretch="lin")
 dev.off()
 
 jpeg("ln2014fc.jpeg")
- plotRGB(ln2014fc, 4, 5, 3, stretch="lin")
+plotRGB(ln2014, 4, 5, 3, stretch="lin")
 dev.off()
 
 
@@ -121,7 +121,7 @@ dev.off()
 # B2 = banda del blu
 # B3 = banda del verde
 # B4 = banda del rosso
-# B5 = banda de NIR (da inserire)
+# B5 = banda de NIR 
 
 B1_2022 <- raster("LC09_L2SP_230072_20220814_20220816_02_T1_SR_B1.tif")
 B1_2022
@@ -135,8 +135,11 @@ B3_2022
 B4_2022 <- raster("LC09_L2SP_230072_20220814_20220816_02_T1_SR_B4.tif")
 B4_2022
 
+B5_2022 <- raster("LC09_L2SP_230072_20220814_20220816_02_T1_SR_B5.tif")
+B5_2022
+
 # Importare i dati tutti insieme, tramite la funzione list che crea una lista di file
-rlist22 <- list(B1_2022, B2_2022, B3_2022, B4_2022)
+rlist22 <- list(B1_2022, B2_2022, B3_2022, B4_2022, B5_2022)
 
 # La funzione stack ci consente di mettere insieme tutti i file in un blocco comune
 # Con la funzione plot, visualizziamo l'immagine
@@ -147,17 +150,30 @@ plot(ln2022)
 # Con la funzione plotRGB è possibile visualizzare l'immagine a colori naturali, r = 3, g = 2, b = 1 
 plotRGB(ln2022, 3, 2, 1, stretch="lin")
 
-# Salvare l'immagine in RGB con la funzione jpeg
+# Falsi colori inserendo la banda 5 del NIR, g = 5 
+plotRGB(ln2022, 4, 5, 3, stretch="lin")
+
+# Salvare l'immagine in RGB sia a colori naturali che con i falsi colori, con la funzione jpeg
 jpeg("ln2022.jpeg")
 plotRGB(ln2022, 3, 2, 1, stretch="lin")
 dev.off()
 
+jpeg("ln2022fc.jpeg")
+plotRGB(ln2022, 4, 5, 3, stretch="lin")
+dev.off()
 
-# Creare un multiframe con la funzione par(mfrow) per confrontare le immagini del 2002, 2014 e 2022
-par(mfrow=c(1,3))
+
+# Creare un multiframe con la funzione par(mfrow) per confrontare le immagini del 2002, 2014 e 2022 sia a colori naturali che in falsi colori. 
+# Salvare l'immagine in jpeg
+jpeg("ln02_14_22.jpeg")
+par(mfrow=c(2,3))
 plotRGB(ln2002, 3, 2, 1, stretch="lin")
 plotRGB(ln2014, 3, 2, 1, stretch="lin")
 plotRGB(ln2022, 3, 2, 1, stretch="lin")
+plotRGB(ln2002, 3, 4, 2, stretch="lin")
+plotRGB(ln2014, 4, 5, 3, stretch="lin")
+plotRGB(ln2022, 4, 5, 3, stretch="lin")
+dev.off()
 
 
 
