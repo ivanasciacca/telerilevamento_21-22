@@ -231,21 +231,21 @@ dev.off()
 
 # Con il color magenta vengono individuate le zone dove varia l'indice DVI nel corso degli ultimi vent'anni.
 
-# Calcolare e plottare NDVI del 2002
+ # Calcolare e plottare NDVI del 2002
 ndviln2002 = dviln2002 / (ln2002[[4]] + ln2002[[3]])
 ndviln2002
 
 cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100)
 plot(ndviln2002, col=cl)
 
-# Calcolare e plottare NDVI del 2014
+ # Calcolare e plottare NDVI del 2014
 ndviln2014 = dviln2014 / (ln2014[[5]] + ln2014[[4]])
 ndviln2014
 
 cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100)
 plot(ndviln2014, col=cl)
 
-# Calcolare e plottare NDVI del 2022
+ # Calcolare e plottare NDVI del 2022
 ndviln2022 = dviln2022 / (ln2022[[5]] + ln2022[[4]])
 ndviln2022
 
