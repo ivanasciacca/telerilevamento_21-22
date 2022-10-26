@@ -3,10 +3,10 @@
 
 
 # Richiamare tutte le librerie da utilizzare 
-library(raster)
+library(raster) # per l'utilizzo di data raster
 library(RStoolbox) # per la classificazione delle immagini
 library(ggplot2) # per la grafica
-library(patchwork)
+library(patchwork) # semplifica la creazione di layout in ggplot con più pannelli
 library(viridis) # leggende a colori per migliorare la leggibilità delle immagini
 
 
@@ -188,7 +188,7 @@ cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100)
 plot(dviln2002, col=cl)
 dev.off()
 
-# In rosso sono indicate le zono con elevato indice DVI, quindi la vegetaione è in salute.
+# In rosso sono indicate le zone con elevato indice DVI, quindi la vegetaione è in salute.
 # In giallo l'indice DVI è più basso, indica il suolo nudo. In blu rappresenta l'acqua dei fiumi e laghi.
 
  # Calcolare il DVI del 2014 
@@ -201,7 +201,8 @@ cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100)
 plot(dviln2014, col=cl)
 dev.off()
 
-# In rosso alto indice DVI, in giallo basso indice DVI.
+# In rosso alto indice DVI, in giallo basso indice DVI. Al centro aumenta la deforestazione, in alto la colorazione rossa indica le aree dei campi coltivati.
+# Quindi spesso con l'indice DVI non si riesce a distiguere una foresta in salute da un campo coltivato con elevata vegetazione.
 
  # Calcolare il DVI del 2022 
 dviln2022 = ln2022[[5]] - ln2022[[4]]
@@ -223,7 +224,7 @@ dviln2022r = resample(dviln2022, dviln2002)
 dvi_dif = dviln2002 - dviln2022r
 dvi_dif
 
-# Plottare e salvare in jpeg, la differenza di DVI dal 2002 al 2022 con una leggenda costruita con la dunzione colorRampPalette
+# Plottare e salvare in jpeg, la differenza di DVI dal 2002 al 2022 con una leggenda costruita tramite la funzione colorRampPalette
 jpeg("dvi_dif.jpeg")
 cld <- colorRampPalette(c('blue','white','magenta'))(100)
 plot(dvi_dif, col=cld)
