@@ -1,5 +1,6 @@
-# Analizzare l'andamento della deforestazione negli ultimi venti anni in Bolivia, esattamente nel distretto di Santa Cruz.
-# Le immagini utilizzate sono state prese dai satelliti Landsat 7 (2002) e Landsat 8 (2014, 2022).
+# Analizzare l'andamento della deforestazione negli ultimi venti anni in Bolivia, vicino al distretto di Santa Cruz.
+# Le immagini utilizzate sono state prese dai satelliti Landsat 7 (20/06/2002) e Landsat 8 (19/10/2014 - 14/08/2022) p230r072.
+# Le immagini sono state scaricate dal seguente sito: https://earthexplorer.usgs.gov/
 
 
 # Richiamare tutte le librerie da utilizzare 
@@ -15,7 +16,7 @@ setwd("C:/lab/Santa Cruz")
 
 
 
-   ##  2002  ##
+   ## IMPORTAZIONE DATI DEL 2002  ##
   
 # Caricare i RasterLayer delle singole bande del 2002
 # B1 = banda del blu
@@ -38,7 +39,7 @@ B4_2002
 # Importare i dati tutti insieme, tramite la funzione list che crea una lista di file
 rlist02 <- list(B1_2002, B2_2002, B3_2002, B4_2002)
 
-# La funzione stack ci consente di mettere insieme tutti i file in un blocco comune
+# La funzione stack consente di mettere insieme tutti i file in un blocco comune
 # Con la funzione plot, visualizziamo l'immagine
 ln2002 <- stack(rlist02)
 ln2002
@@ -60,7 +61,7 @@ plotRGB(ln2002, 3, 4, 2, stretch="lin")
 dev.off()
 
 
-   ##  2014  ##
+   ##  IMPORTAZIONE DATI DEL 2014  ##
   
 # Caricare i RasterLayer delle singole bande del 2014
 
@@ -89,7 +90,7 @@ B5_2014
 # Importare i dati tutti insieme, tramite la funzione list che crea una lista di file
 rlist14 <- list(B1_2014, B2_2014, B3_2014, B4_2014, B5_2014)
 
-# La funzione stack ci consente di mettere insieme tutti i file in un blocco comune
+# La funzione stack consente di mettere insieme tutti i file in un blocco comune
 # Con la funzione plot, visualizziamo l'immagine
 ln2014 <- stack(rlist14)
 ln2014
@@ -111,7 +112,7 @@ plotRGB(ln2014, 4, 5, 3, stretch="lin")
 dev.off()
 
 
-   ## 2022 ##
+   ## IMPORTAZIONE DATI DEL 2022 ##
 
 # Caricare i RasterLayer delle singole bande del 2022
 
@@ -140,7 +141,7 @@ B5_2022
 # Importare i dati tutti insieme, tramite la funzione list che crea una lista di file
 rlist22 <- list(B1_2022, B2_2022, B3_2022, B4_2022, B5_2022)
 
-# La funzione stack ci consente di mettere insieme tutti i file in un blocco comune
+# La funzione stack consente di mettere insieme tutti i file in un blocco comune
 # Con la funzione plot, visualizziamo l'immagine
 ln2022 <- stack(rlist22)
 ln2022
@@ -176,7 +177,7 @@ dev.off()
 
 
 
-   ## Indici spettrali di vegetazione ##
+   ## INDICI SPETTRALI DI VEGETAZIONE ##
 
  # Calcolare il DVI del 2002 
 dviln2002 = ln2002[[4]] - ln2002[[3]]
@@ -265,7 +266,7 @@ dev.off()
 # NDVI è l'indice DVI normalizzato, quindi quelli relativi al 2014 e 2022 non devono essere ricampionati.
 
 
-   ## Land cover ##
+   ## LAND COVER ##
 
  # Classificare l'immagine del 2002 in due classi
 # Classe 1 = zona forestale (bianco)
