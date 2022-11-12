@@ -268,95 +268,116 @@ dev.off()
 
    ## LAND COVER ##
 
- # Classificare l'immagine del 2002 in due classi
+ # Classificare l'immagine del 2002 in tre classi
 # Classe 1 = zona forestale (bianco)
-# Classe 2 = suolo agricolo (verde)
+# Classe 2 = suolo agricolo (giallo)
+# Classe 3 = centri urbani (verde)
 
-ln2002nC <- unsuperClass(ln2002, nClasses=2)
+ln2002nC <- unsuperClass(ln2002, nClasses=3)
 ln2002nC
+jpeg("Perc_2002.jpeg")
 plot(ln2002nC$map)
+dev.off()
 
 # Calcolare la frequenza dei pixel che appartengono a ciascuna classe 
 freq(ln2002nC$map)
 
-# Classe 1 = 25409424
-# Classe 2 = 12576417
-# NA 17433870 (non applicabile)
+# Classe 1 = 23292002
+# Classe 2 = 5802788
+# Classe 3 = 8891051
+# NA = 17433870 (non applicabile)
 
 # Calcolare la percentuale di foresta e di area agricola del 2002
 tot2002 <- 55419711
 
-perc_forest_2002 <- 25409424 * 100 / tot2002
+perc_forest_2002 <- 23292002 * 100 / tot2002
 perc_forest_2002
-# Percentuale foresta = 45.84907
+# Percentuale foresta = 42.02837
 
-perc_agr_2002 <- 12576417 * 100 / tot2002
+perc_agr_2002 <- 5802788 * 100 / tot2002
 perc_agr_2002
-# Percentuale suolo agricolo = 22.69304
+# Percentuale suolo agricolo = 10.47062
+
+perc_city_2002 <- 8891051 * 100 / tot2002
+perc_city_2002
+# Percentuale di centri urbani =  16.04312
 
 
+ # Classificare l'immagine del 2014 in tre classi
+# Classe 1 = zona forestale (bianca)
+# Classe 2 = suolo agricolo (gialla)
+# Classe 3 = centro urbano (verde)
 
- # Classificare l'immagine del 2014 in due classi
-# Classe 1 = zona agricola (bianca)
-# Classe 2 = suolo forestale (verde)
-
-ln2014nC <- unsuperClass(ln2014, nClasses=2)
+ln2014nC <- unsuperClass(ln2014, nClasses=3)
 ln2014nC
+jpeg("Perc_2014.jpeg")
 plot(ln2014nC$map)
+dev.off() 
 
 # Calcolare la frequenza dei pixel che appartengono a ciascuna classe 
 freq(ln2014nC$map)
 
-# Classe 1 = 23641752 
-# Classe 2 = 17040113
-# NA 18928376 (non applicabile)
+# Classe 1 = 15163967 
+# Classe 2 = 16442160
+# Classe 3 = 9075738
+# NA = 18928376 (non applicabile)
 
 # Calcolare la percentuale di foresta e di area agricola del 2014
 tot2014 <- 59610241 
 
-perc_forest_2014 <- 17040113 * 100 / tot2014
+perc_forest_2014 <- 15163967 * 100 / tot2014
 perc_forest_2014
-# Percentuale foresta = 28.58588
+# Percentuale foresta = 25.43853
 
-perc_agr_2014 <- 23641752 * 100 / tot2014
+perc_agr_2014 <- 16442160 * 100 / tot2014
 perc_agr_2014
-# Percentuale zona agricola = 39.66055
+# Percentuale zona agricola = 27.58278
+
+perc_city_2014 <- 9075738 * 100 / tot2014
+perc_city_2014
+# Percentuale centri urbani = 15.22513
 
 
+ # Classificare l'immagine del 2022 in tre classi
+# Classe 1 = suolo agricolo (bianco) 
+# Classe 2 = centro urbano? (giallo)
+# Classe 3 = zona forestale (verde)
 
- # Classificare l'immagine del 2022 in due classi
-# Classe 1 = zona forestale (bianco) 
-# Classe 2 = suolo agricolo (verde)
-
-ln22nC <- unsuperClass(ln2022, nClasses=2)
+ln22nC <- unsuperClass(ln2022, nClasses=3)
 ln22nC
+jpeg("Perc_2022.jpeg")
 plot(ln22nC$map)
+dev.off()
 
 # Calcolare la frequenza dei pixel che appartengono a ciascuna classe 
 freq(ln22nC$map)
 
-# Classe 1 = 314766
-# Classe 2 = 40480835
+# Classe 1 = 20359974 
+# Classe 2 = 299648
+# Classe 3 = 20134286 
 # NA 18663113 (non applicabile)
 
 # Calcolare la percentuale di foresta e di area agricola del 2022
 tot22 <- 59457021
 
-perc_forest_22 <- 314766 * 100 / tot22
+perc_forest_22 <- 20134286  * 100 / tot22
 perc_forest_22
-# Percentuale foresta = 0.5294009
+# Percentuale zona foresta = 33.8636
 
-perc_agr_22 <- 40480835 * 100 / tot22
+perc_agr_22 <- 20359974  * 100 / tot22
 perc_agr_22
-# Percentuale zona agricola = 68.0842
+# Percentuale suolo agricolo =  34.24318 
 
+perc_city_22 <- 299648 * 100 / tot22
+perc_city_22
+# Percentuale centro urbano =  0.5039741
 
-# Costruire un dataframe con i dati percentuali dell'area forestale e del suolo agricolo
+# Costruire un dataframe con i dati percentuali dell'area forestale, del suolo agricolo e del centro urbano
 # Colonne (campi)
-class <- c("Forest", "Agriculture")
-percent_2002 <- c(25409424,12576417)
-percent_2014 <- c(17040113,23641752)
-percent_2022 <- c(314766,40480835)
+class <- c("Forest", "Agriculture", "City")
+percent_2002 <- c(23292002,5802788,8891051)
+percent_2014 <- c(15163967,16442160,9075738)
+percent_2022 <- c(20134286,20359974,299648)
 
 multitemporal <- data.frame(class, percent_2002, percent_2014, percent_2022)
 multitemporal
@@ -364,5 +385,6 @@ multitemporal
 # Visualizzare in formato tabella
 View(multitemporal)
 
-   
 
+
+   ## DEVIAZIONE STANDARD ##
