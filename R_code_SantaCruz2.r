@@ -401,4 +401,4 @@ summary(ln2002_pca$model)
 # Plot della mappa
 plot(ln2002_pca$map)
 
-#
+
