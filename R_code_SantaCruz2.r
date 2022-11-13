@@ -387,4 +387,4 @@ View(multitemporal)
 
 
 
-   ## DEVIAZIONE STANDARD ##
+   ## ANALISI MULTIVARIATA ##
