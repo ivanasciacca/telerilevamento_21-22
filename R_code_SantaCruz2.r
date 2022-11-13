@@ -394,8 +394,11 @@ View(multitemporal)
 ln2002_pca <- rasterPCA(ln2002)
 ln2002_pca
 
-#
+# Summery è una funzione generica che riepiloga i risulati ottenuti con altre funzioni utilizzate
+# Importance of components: quanto spiega della variabilità iniziale ogni singola componente
 summary(ln2002_pca$model)
 
-#
+# Plot della mappa
 plot(ln2002_pca$map)
+
+#
