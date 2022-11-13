@@ -388,3 +388,14 @@ View(multitemporal)
 
 
    ## ANALISI MULTIVARIATA ##
+
+# 2002
+
+ln2002_pca <- rasterPCA(ln2002)
+ln2002_pca
+
+#
+summary(ln2002_pca$model)
+
+#
+plot(ln2002_pca$map)
