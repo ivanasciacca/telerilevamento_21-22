@@ -163,3 +163,50 @@ plot(ndviln2022, col=cl)
 dev.off()
 
 # NDVI è l'indice DVI normalizzato, quindi quello relativo al 2022 non deve essere ricampionato
+
+
+                                                              ## LAND COVER ##
+                                                              
+# Classificare l'immagine del 2002 in tre classi: 
+# Classe 1: (bianco)
+# Classe 2: (giallo)
+# Classe 3: (verde)
+
+ln2002nC <- unsuperClass(ln2002, nClasses=3)
+ln2002nC
+jpeg("Perc_2002.jpeg")
+plot(ln2002nC$map)
+dev.off()
+
+# Calcolare la frequenza dei pixel che appartengono a ciascuna classe 
+freq(ln2002nC$map)
+
+# Classe 1 = 10523413
+# Classe 2 = 16105010
+# Classe 3 = 11384363
+# NA = 17477335 (non applicabile)
+
+tot2002 <- 55490121 
+
+
+## # Classificare l'immagine del 2022 in tre classi: 
+# Classe 1: (bianco)
+# Classe 2: (giallo)
+# Classe 3: (verde)
+
+ln22nC <- unsuperClass(ln2022, nClasses=3)
+ln22nC
+jpeg("Perc_2022.jpeg")
+plot(ln22nC$map)
+dev.off()
+
+# Calcolare la frequenza dei pixel che appartengono a ciascuna classe 
+freq(ln22nC$map)
+
+# Classe 1 = 13710910
+# Classe 2 = 11251362
+# Classe 3 = 15854129 
+# NA 18640620 (non applicabile)
+
+tot22 <- 59457021
+
