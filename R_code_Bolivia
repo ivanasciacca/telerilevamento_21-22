@@ -56,7 +56,7 @@ plotRGB(ln2002, 3, 2, 1, stretch="lin")
 plotRGB(ln2002, 3, 4, 2, stretch="lin")
 
 
-                                                  ## IMPORTAZIONE DEI DATI DEL 2002 ##
+                                                  ## IMPORTAZIONE DEI DATI DEL 2022 ##
                                             
 # Caricare i RasterLayer delle singole bande del 2022
 # B1 = banda coastal/aerosol
