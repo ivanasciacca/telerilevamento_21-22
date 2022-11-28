@@ -162,4 +162,4 @@ plot(ndviln2002, col=cl)
 plot(ndviln2022, col=cl)
 dev.off()
 
-# NDVI è l'indice DVI normalizzato, quindi quello relativo al 2022 non 
+# NDVI è l'indice DVI normalizzato, quindi quello relativo al 2022 non deve essere ricampionato
