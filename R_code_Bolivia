@@ -168,9 +168,9 @@ dev.off()
                                                               ## LAND COVER ##
                                                               
 # Classificare l'immagine del 2002 in tre classi: 
-# Classe 1: (bianco)
-# Classe 2: (giallo)
-# Classe 3: (verde)
+# Classe 1: Suolo nudo (bianco)
+# Classe 2: Area forestale (giallo)
+# Classe 3: Zona agricola (verde)
 
 ln2002nC <- unsuperClass(ln2002, nClasses=3)
 ln2002nC
@@ -181,18 +181,30 @@ dev.off()
 # Calcolare la frequenza dei pixel che appartengono a ciascuna classe 
 freq(ln2002nC$map)
 
-# Classe 1 = 10523413
-# Classe 2 = 16105010
-# Classe 3 = 11384363
+# Classe 1 = 16168804
+# Classe 2 = 11412467
+# Classe 3 = 10431515
 # NA = 17477335 (non applicabile)
 
 tot2002 <- 55490121 
 
+perc_forest_2002 <- 11412467 * 100 / tot2002
+perc_forest_2002
+# Percentuale di foresta = 20.56666
 
-## # Classificare l'immagine del 2022 in tre classi: 
-# Classe 1: (bianco)
-# Classe 2: (giallo)
-# Classe 3: (verde)
+perc_agr_2002 <- 10431515 * 100 / tot2002
+perc_agr_2002
+# Percentuale di suolo agricolo = 18.79887
+
+perc_suolo_2002 <- 16168804 * 100 / tot2002
+perc_suolo_2002
+# Percentuale di suolo nudo = 29.13817 
+
+
+# Classificare l'immagine del 2022 in tre classi: 
+# Classe 1: Zona agricola (bianco)
+# Classe 2: Area forestale (giallo)
+# Classe 3: Suolo nudo (verde)
 
 ln22nC <- unsuperClass(ln2022, nClasses=3)
 ln22nC
@@ -203,10 +215,33 @@ dev.off()
 # Calcolare la frequenza dei pixel che appartengono a ciascuna classe 
 freq(ln22nC$map)
 
-# Classe 1 = 13710910
-# Classe 2 = 11251362
-# Classe 3 = 15854129 
+# Classe 1 = 15275272
+# Classe 2 = 11853613
+# Classe 3 = 13687516
 # NA 18640620 (non applicabile)
 
 tot22 <- 59457021
 
+perc_forest_22 <- 11853613  * 100 / tot22
+perc_forest_22
+# Percentuale di foresta = 19.93644
+
+perc_agr_22 <- 15275272 * 100 / tot22
+perc_agr_22
+# Percentuale di suolo agricolo =  25.69128
+
+perc_suolo_22 <- 13687516 * 100 / tot22
+perc_suolo_22
+# Percentuale di suolo nudo = 23.02086
+
+# Costruire un dataframe con i dati percentuali dell'area forestale, della zona agricola e del suolo nudo
+# Colonne (campi)
+class <- c("Foresta", "Agricoltura", "Suolo")
+percent_2002 <- c(11412467,10431515,16168804)
+percent_2022 <- c(11853613, 15275272,13687516)
+
+multitemporal <- data.frame(class, percent_2002, percent_2022)
+multitemporal
+
+# Visualizzare in formato tabella
+View(multitemporal)
