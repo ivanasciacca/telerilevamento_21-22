@@ -305,3 +305,12 @@ g1_2002 + im_2002 + pRGB_2002
 # im_202 è l'immagine con la devizione standard utilizzando la leggenda inferno della funzione viridis
 
 ## 2022
+ln2022_pca <- rasterPCA(ln2022)
+ln2022_pca
+
+# Summery è una funzione generica che riepiloga i risulati ottenuti con altre funzioni utilizzate
+# Importance of components: quanto spiega della variabilità iniziale ogni singola componente
+summary(ln2022_pca$model)
+
+# Plot della mappa
+plot(ln2022_pca$map)
