@@ -245,3 +245,63 @@ multitemporal
 
 # Visualizzare in formato tabella
 View(multitemporal)
+
+
+                                                     ## ANALISI MULTIVARIATA ##
+
+## 2002
+ln2002_pca <- rasterPCA(ln2002)
+ln2002_pca
+
+# Summery è una funzione generica che riepiloga i risulati ottenuti con altre funzioni utilizzate
+# Importance of components: quanto spiega della variabilità iniziale ogni singola componente
+summary(ln2002_pca$model)
+
+# Plot della mappa
+plot(ln2002_pca$map)
+    
+# prima componente con maggiore informazione, la seconda un pò meno, terza solo rumore, quarta solo di controllo (banda vuota)
+
+pc1 <- ln2002_pca$map$PC1
+pc2 <- ln2002_pca$map$PC2
+pc3 <- ln2002_pca$map$PC3    
+
+# Aprire un ggplot vuoto ed associare una geometria raster
+g1_2002 <- ggplot() +
+geom_raster(pc1, mapping=aes(x=x, y=y, fill=PC1))
+
+# x ed y rappresentano x e y della mappa, fill i nomi dei layer (PC1)
+
+g2_2002 <- ggplot() +
+geom_raster(pc2, mapping=aes(x=x, y=y, fill=PC2))
+
+g3_2002 <- ggplot() +
+geom_raster(pc3, mapping=aes(x=x, y=y, fill=PC3)) # molto rumore di fondo
+
+# Plot uno accanto all'altro g1_2002, g2_2002, g3_2002
+g1_2002 + g2_2002 + g3_2002
+
+# Deviazione standard sulla componente principale PC1
+# Calcolare la variabilità sulla componente che ci da più informazioni, utilizzando la funzione focal
+sd5_2002 <- focal(pc1, matrix(1/25, 5, 5), fun=sd)
+sd5_2002
+
+# Fare un mappaggio con ggplot della deviazione standard della componente principale 
+ggplot() +
+geom_raster(sd5_2002, mapping=aes(x=x, y=y, fill=layer))
+
+# Visualizzare la mappa con la scala di colori inferno della funzione viridis
+im_2002 <- ggplot() +
+geom_raster(sd3, mapping=aes(x=x, y=y, fill=layer)) +
+scale_fill_viridis(option= "inferno")
+
+# Falsi colori inserendo la banda 4 dell'infrarosso vicino g = 4
+pRGB_2002 <- plotRGB(ln2002, 3, 4, 2, stretch="lin")
+
+g1_2002 + im_2002 + pRGB_2002 
+
+# pRGB_2002 è l'immagine originale con la la banda del NIR nella componente del green
+# g1_2002 è l'immagine della prima componente principale su cui è stata calcolata la deviazione standard
+# im_202 è l'immagine con la devizione standard utilizzando la leggenda inferno della funzione viridis
+
+## 2022
