@@ -1,9 +1,10 @@
                                                         ## DEFORESTAZIONE IN BOLIVIA ##
                                            
 # Lo scopo di questo progetto è di analizzare la deforestazione nell'ultimo ventennio nel dipartimento di Santa Cruz in Bolivia, 
-# a causa di deforestazione legali e illegali per dare spazio a campi agricoli e allevamenti.
+# causata da deforestazione legali e illegali per dare spazio a campi agricoli e allevamenti.
 
-# Verranno confrontate le immagini satellitari del 24/09/2002 di Landsat 7 e quella del 01/10/2022 di Landsat 9; con Path: 230 e Row: 072
+# Verranno confrontate le immagini satellitari del 24/09/2002 di Landsat 7 e quella del 01/10/2022 di Landsat 8-9.
+# Path: 230 e Row: 072
 # Le immagini satellitari sono state recuperate dal seguente sito: https://earthexplorer.usgs.gov/
 
 
@@ -249,9 +250,14 @@ View(multitemporal)
 
                                                      ## ANALISI MULTIVARIATA ##
 
+## Prova n°1 
+# Prova fallita, probabilmente il mio pc non riesce a supportare ed elaborare i dati. Ho provato comunque a sviluppare il codice (Non è inserito nella presentazione)
+
  ## 2002
 ln2002_pca <- rasterPCA(ln2002)
 ln2002_pca
+
+# La funzione ha impiegato molto tempo a caricarsi per poi dare errore. 
 
 # Summery è una funzione generica che riepiloga i risulati ottenuti con altre funzioni utilizzate
 # Importance of components: quanto spiega della variabilità iniziale ogni singola componente
@@ -358,3 +364,13 @@ g1_2022 + im_2022 + pRGB_2022
 # pRGB_2022 è l'immagine originale con la la banda del NIR nella componente del green
 # g1_2022 è l'immagine della prima componente principale su cui è stata calcolata la deviazione standard
 # im_2022 è l'immagine con la devizione standard utilizzando la leggenda inferno della funzione viridis
+
+
+## Prova n°2
+# anche questa prova è fallita
+
+df_02 <- as.data.frame(ln2002, xy=T)
+
+
+## Prova n°3
+# Ho provato a tagliare e ridimensionare l'immagine, ma anche in questo caso la prova è fallita
