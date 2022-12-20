@@ -299,14 +299,15 @@ geom_raster(sd5_2002, mapping=aes(x=x, y=y, fill=layer))
 im_2002 <- ggplot() +
 geom_raster(sd5_2002, mapping=aes(x=x, y=y, fill=layer)) +
 scale_fill_viridis(option= "inferno")
+im_2002
 
 # Falsi colori inserendo la banda 4 dell'infrarosso vicino g = 4
 pRGB_2002 <- plotRGB(ln2002, 3, 4, 2, stretch="lin")
 
 g1_2002 + im_2002 + pRGB_2002 
 
-# pRGB_2002 è l'immagine originale con la la banda del NIR nella componente del green
-# g1_2002 è l'immagine della prima componente principale su cui è stata calcolata la deviazione standard
+# pRGB_2002 è l'immagine originale con la la banda del NIR nella componente del green (?)
+# g1_2002 è l'immagine della prima componente principale su cui è stata calcolata la deviazione standard (?)
 # im_2002 è l'immagine con la devizione standard utilizzando la leggenda inferno della funzione viridis
 
  ## 2022
@@ -354,22 +355,15 @@ geom_raster(sd5_2022, mapping=aes(x=x, y=y, fill=layer))
 im_2022 <- ggplot() +
 geom_raster(sd5_2022, mapping=aes(x=x, y=y, fill=layer)) +
 scale_fill_viridis(option= "inferno")
+im_2022
 
 # Falsi colori inserendo la banda 5 del NIR, g = 5 
 pRGB_2022 <- plotRGB(ln2022, 4, 5, 3, stretch="lin")
 
 g1_2022 + im_2022 + pRGB_2022 
 
-# pRGB_2022 è l'immagine originale con la la banda del NIR nella componente del green
-# g1_2022 è l'immagine della prima componente principale su cui è stata calcolata la deviazione standard
+# pRGB_2022 è l'immagine originale con la la banda del NIR nella componente del green (?)
+# g1_2022 è l'immagine della prima componente principale su cui è stata calcolata la deviazione standard (?)
 # im_2022 è l'immagine con la devizione standard utilizzando la leggenda inferno della funzione viridis
 
 
-## Prova n°2
-# anche questa prova è fallita
-
-df_02 <- as.data.frame(ln2002, xy=T)
-
-
-## Prova n°3
-# Ho provato a tagliare e ridimensionare l'immagine, ma anche in questo caso la prova è fallita
