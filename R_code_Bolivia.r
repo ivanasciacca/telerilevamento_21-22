@@ -250,14 +250,9 @@ View(multitemporal)
 
                                                      ## ANALISI MULTIVARIATA ##
 
-## Prova n°1 
-# Prova fallita, probabilmente il mio pc non riesce a supportare ed elaborare i dati. Ho provato comunque a sviluppare il codice (Non è inserito nella presentazione)
-
- ## 2002
+ ## PCA del 2002
 ln2002_pca <- rasterPCA(ln2002)
 ln2002_pca
-
-# La funzione ha impiegato molto tempo a caricarsi per poi dare errore. 
 
 # Summery è una funzione generica che riepiloga i risulati ottenuti con altre funzioni utilizzate
 # Importance of components: quanto spiega della variabilità iniziale ogni singola componente
@@ -266,7 +261,11 @@ summary(ln2002_pca$model)
 # Plot della mappa
 plot(ln2002_pca$map)
     
-# prima componente con maggiore informazione, la seconda un pò meno, terza solo rumore, quarta solo di controllo (banda vuota)
+# La prima componente fornisce maggiore informazione (0.54%), la seconda un pò meno (0.44%), terza solo rumore, quarta solo di controllo
+
+# Standard deviation     2290.8617259 (comp.1) 2051.8021336 (comp.2) 2.667559e+02 (comp.3) 1.33229e+02 (comp.4)
+# Proportion of Variance    0.5497152 (comp.1) 0.4409719 (comp.2) 7.453635e-03 (comp.3) 1.85925e-03 (comp.4)
+# Cumulative Proportion     0.5497152 (comp.1)  0.9906871 (comp.2) 9.981407e-01 (comp.3) 1.00000e+00 (comp.4)
 
 pc1 <- ln2002_pca$map$PC1
 pc2 <- ln2002_pca$map$PC2
