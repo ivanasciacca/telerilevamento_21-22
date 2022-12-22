@@ -1,7 +1,7 @@
                                                         ## DEFORESTAZIONE IN BOLIVIA ##
                                            
 # Lo scopo di questo progetto è di analizzare la deforestazione nell'ultimo ventennio nel dipartimento di Santa Cruz in Bolivia, 
-# causata da deforestazione legali e illegali per dare spazio a campi agricoli e allevamenti.
+# causata da deforestazione legale e illegale per dare spazio a campi agricoli e allevamenti.
 
 # Verranno confrontate le immagini satellitari del 24/09/2002 di Landsat 7 e quella del 01/10/2022 di Landsat 8-9.
 # Path: 230 e Row: 072
@@ -281,7 +281,7 @@ g2_2002 <- ggplot() +
 geom_raster(pc2, mapping=aes(x=x, y=y, fill=PC2))
 
 g3_2002 <- ggplot() +
-geom_raster(pc3, mapping=aes(x=x, y=y, fill=PC3)) # molto rumore di fondo
+geom_raster(pc3, mapping=aes(x=x, y=y, fill=PC3)) 
 
 # Plot uno accanto all'altro g1_2002, g2_2002, g3_2002
 g1_2002 + g2_2002 + g3_2002
@@ -306,11 +306,11 @@ pRGB_2002 <- plotRGB(ln2002, 3, 4, 2, stretch="lin")
 
 g1_2002 + im_2002 + pRGB_2002 
 
-# pRGB_2002 è l'immagine originale con la la banda del NIR nella componente del green (?)
-# g1_2002 è l'immagine della prima componente principale su cui è stata calcolata la deviazione standard (?)
+# pRGB_2002 è l'immagine originale con la la banda del NIR nella componente del green 
+# g1_2002 è l'immagine della prima componente principale su cui è stata calcolata la deviazione standard 
 # im_2002 è l'immagine con la devizione standard utilizzando la leggenda inferno della funzione viridis
 
- ## 2022
+ ## PCA del 2022, ha dato errore
 ln2022_pca <- rasterPCA(ln2022)
 ln2022_pca
 
@@ -362,8 +362,8 @@ pRGB_2022 <- plotRGB(ln2022, 4, 5, 3, stretch="lin")
 
 g1_2022 + im_2022 + pRGB_2022 
 
-# pRGB_2022 è l'immagine originale con la la banda del NIR nella componente del green (?)
-# g1_2022 è l'immagine della prima componente principale su cui è stata calcolata la deviazione standard (?)
+# pRGB_2022 è l'immagine originale con la la banda del NIR nella componente del green 
+# g1_2022 è l'immagine della prima componente principale su cui è stata calcolata la deviazione standard 
 # im_2022 è l'immagine con la devizione standard utilizzando la leggenda inferno della funzione viridis
 
 
