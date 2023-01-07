@@ -43,8 +43,8 @@
 \end{itemize}
 \bigskip
 \centering
-\includegraphics[width=0.2\textwidth]{landsat7.jpg}
-\includegraphics[width=0.4\textwidth]{Landsat 8.jpg}
+\includegraphics[width=0.3\textwidth]{landsat7.jpg}
+\includegraphics[width=0.5\textwidth]{Landsat 8.jpg}
 \end{frame}
 
 
