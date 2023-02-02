@@ -12,9 +12,9 @@
 # Richiamare tutte le librerie da utilizzare 
 
 library(raster) # per l'utilizzo di data raster
-library(RStoolbox) # per la classificazione delle immagini
-library(ggplot2) # per la grafica
-library(patchwork) # semplifica la creazione di layout in ggplot con più pannelli
+library(RStoolbox) # per visualizzare le immagini e per calcolare la variabilità
+library(ggplot2) # per visualizzare i ggplot
+library(patchwork) # creazione di multiframe con i grafici ggplot2 
 library(viridis) # leggende a colori per migliorare la leggibilità delle immagini
 
 # Settare la cartella di lavoro Bolivia, che è interna alla cartella lab
