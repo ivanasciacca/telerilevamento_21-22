@@ -155,35 +155,6 @@
 \end{frame}
 
 
-\section{Analisi multivariata}
-
-\begin{frame}{Analisi multivariata}
-\frametitle{Analisi multivariata 2002}
-\ssmall{\lstinputlisting[language = R]{pca.r}}
-\end{frame}
-
-\begin{frame}{Analisi multivariata}
-\frametitle{Analisi multivariata 2002}
-\centering
-\includegraphics[width=0.4\textwidth]{graficoPC.png}
-\end{frame}
-
-\begin{frame}{Analisi multivariata}
-\frametitle{Analisi multivariata 2002}
-\ssmall{\lstinputlisting[language = R]{sd5.r}}
-\end{frame}
-
-\begin{frame}{Analisi multivariata}
-\frametitle{Analisi multivariata 2002}
-\centering
-\includegraphics[width=0.5\textwidth]{pc02.jpeg}
-\end{frame}
-
-\begin{frame}{Analisi multivariata}
-\frametitle{Analisi multivariata 2022}
-\centering
-\includegraphics[width=0.9\textwidth]{errore22.png}  
-\end{frame}
 \section{Conclusione}
 
 \begin{frame}{Conclusione}
