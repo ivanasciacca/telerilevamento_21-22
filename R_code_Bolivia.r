@@ -261,8 +261,7 @@ summary(ln2002_pca$model)
 # Plot della mappa
 plot(ln2002_pca$map)
     
-# La prima componente fornisce maggiore informazione (0.54%), la seconda un pò meno (0.44%), terza solo rumore, quarta solo di controllo
-
+# La prima componente fornisce maggiore informazione (0.54%), la seconda un pò meno (0.44%)
 # Standard deviation     2290.8617259 (comp.1) 2051.8021336 (comp.2) 2.667559e+02 (comp.3) 1.33229e+02 (comp.4)
 # Proportion of Variance    0.5497152 (comp.1) 0.4409719 (comp.2) 7.453635e-03 (comp.3) 1.85925e-03 (comp.4)
 # Cumulative Proportion     0.5497152 (comp.1)  0.9906871 (comp.2) 9.981407e-01 (comp.3) 1.00000e+00 (comp.4)
